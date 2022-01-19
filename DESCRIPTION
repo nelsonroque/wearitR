@@ -9,9 +9,13 @@ BugReports: https://github.com/nelsonroque
 Depends: 
     R (>= 3.3),
     tidyverse,
-    readr
+    readr,
+    skimr,
+    dataReporter
 Imports: 
     tidyverse,
-    readr
+    readr,
+    skimr,
+    dataReporter
 Encoding: UTF-8
 RoxygenNote: 7.1.1

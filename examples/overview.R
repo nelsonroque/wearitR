@@ -46,8 +46,26 @@ dc_stacked_package = merge_data_collection(fns=dc$nonkey_files)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# create data quality report ----
-skimr::skim(dc_stacked_package)
+# reformat key files ----
+reformat_keyfiles()
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# create data quality reports ----
+
+# Simple
+example_simple_dataquality_report = skimr::skim(dc_stacked_dplyr)
+
+# Complex
+#dataReporter::visualize(dc_stacked_dplyr)
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# create data collection of M2C2 cogtest data
+cogtasks = create_data_collection(data_path = "examples/data", 
+                                  types=c("cog_test"))
+
+cogtasks_df = read_csv(cogtasks$nonkey_files, col_names = c("wearit_uuid", "cogtask_json"))
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
