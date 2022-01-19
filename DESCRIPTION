@@ -7,12 +7,11 @@ License: MIT
 URL: https://github.com/nelsonroque
 BugReports: https://github.com/nelsonroque
 Depends: 
-    R (>= 3.3)
+    R (>= 3.3),
+    tidyverse,
+    readr
 Imports: 
     tidyverse,
     readr
-Suggests: 
-    rmarkdown,
-    testthat
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.1.1

@@ -1,5 +1,9 @@
-# @export
-read_wearit_survey <- function(fn) {
+#' Read WearIT Survey data ----
+#' @export
+#' @importFrom tibble tibble
+#' @importFrom dplyr arrange
+#' @importFrom readr read_csv
+read_wearit_surveydata <- function(fn) {
   # read in survey data with all headers ----
   raw_df <- read_csv(fn, skip = 0)
   
