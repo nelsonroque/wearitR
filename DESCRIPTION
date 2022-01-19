@@ -2,11 +2,7 @@ Package: wearitR
 Title: Pre-processing of WearIT Platform Data
 Version: 0.0.0.1
 Authors@R: c(person("Nelson", "Roque", , "nelson.roque@ucf.edu", role = c("aut", "cre")))
-Description: The 'tidyverse' is a set of packages that work in harmony
-    because they share common data representations and 'API' design. This
-    package is designed to make it easy to install and load multiple
-    'tidyverse' packages in a single step. Learn more about the
-    'tidyverse' at <https://www.tidyverse.org>.
+Description: 'wearitR' is a package that works to tidy data from the WearIT Platform into common data representations.
 License: MIT
 URL: https://github.com/nelsonroque
 BugReports: https://github.com/nelsonroque
