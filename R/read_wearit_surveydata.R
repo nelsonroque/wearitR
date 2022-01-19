@@ -3,7 +3,8 @@
 #' @importFrom tibble tibble
 #' @importFrom dplyr arrange
 #' @importFrom readr read_csv
-read_wearit_surveydata <- function(fn) {
+#' @importFrom rlist list.append
+read_wearit_surveydata <- function(fn, output = c("key_table", "tidy_data")) {
   # read in survey data with all headers ----
   raw_df <- read_csv(fn, skip = 0)
   
@@ -33,6 +34,21 @@ read_wearit_surveydata <- function(fn) {
   # read in the file again, now with the clean tidied headers of choice (labels, num, ques)
   final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels)
   
-  return(list(keytable = new_key_table, 
-              clean_data = final_df))
+  # build output list ----
+  if(is.na(output)) {
+    out_list = final_df
+  } else {
+    out_list = list()
+    if("key_table" %in% output) {
+      out_list = list.append(out_list, 
+                             key_table = new_key_table)
+    }
+    
+    if("tidy_data" %in% output) {
+      out_list = list.append(out_list, 
+                             tidy_data = final_df)
+    }
+  }
+
+  return(out_list)
 }

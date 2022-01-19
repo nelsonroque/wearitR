@@ -4,7 +4,7 @@
 \alias{read_wearit_surveydata}
 \title{Read WearIT Survey data ----}
 \usage{
-read_wearit_surveydata(fn)
+read_wearit_surveydata(fn, output = c("key_table", "tidy_data"))
 }
 \description{
 Read WearIT Survey data ----
