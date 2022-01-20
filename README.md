@@ -2,7 +2,7 @@
 
 An R package to simplify data preparation across WearIT platform exports. 
 
-Disclaimer: This repository is not directly affiliated with the WearIT platform.
+`Disclaimer: This repository is not directly affiliated with the WearIT platform.`
 
 -----
 
@@ -18,6 +18,8 @@ Disclaimer: This repository is not directly affiliated with the WearIT platform.
 	- Description: ``` Concatenate to a single dataframe, the data n. ```
 - `reformat_keyfiles()`
 	- Description: ``` reformat key files for easier querying. ```
+
+See `examples/overview.R` for a sampling of functions in a brief demo.
 
 -----
 
