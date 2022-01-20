@@ -15,6 +15,8 @@ beep_survey2_tidydata = beep_survey2_list$tidy_data
 dc_stacked_dplyr = bind_rows(beep_survey1_tidydata, 
                              beep_survey2_tidydata)
 
+# add pack_id from filename
+
 # look at columns that have NAs ----
 dc_stacked_dplyr_nacols = dc_stacked_dplyr %>%
   select(`Survey Date Submitted`, contains("N/A"))
@@ -112,6 +114,8 @@ dotmemory_df <- bind_rows(coglookup) %>%
   select(order(colnames(.))) %>%
   select(wearit_uuid, everything()) %>%
   mutate(dt_date = anytime::anydate(time_stamp))
+
+#read_csv(col_types=c(col_character(), col_integer()))
 
 # evaluate distribution of computed frames per second ----
 ggplot(dotmemory_df, aes(as.numeric(cogtask_cps))) + geom_histogram()
