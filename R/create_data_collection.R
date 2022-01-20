@@ -14,14 +14,17 @@ create_data_collection <- function(data_path=NA, types=c()) {
     } else {
       target_files <- c()
       for(i in types) {
+        print(i)
+        print(":::::::::::")
         target_files = c(target_files, fns[grepl(i, fns)])
+        print(target_files)
       }
       
       ## Find all key and non-key files (used for auto-merging)
       key_files <- target_files[grepl("_key", target_files)]
       nonkey_files <- target_files[!grepl("_key", target_files)]
-      if(length(key_files) < 1) {
-        warning("No `Wear-IT` key files found. Subsequent linking operations via `wearitR` may not work.")
+      if(length(key_files) == 0) {
+        message("No `Wear-IT` key files found. Subsequent linking operations via `wearitR` may be limited. Download key file (if necessary) from Wear-IT Platform.")
       }
     }
   }

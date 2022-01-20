@@ -61,11 +61,67 @@ example_simple_dataquality_report = skimr::skim(dc_stacked_dplyr)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# create data collection of M2C2 cogtest data
+# create data collection of M2C2 cogtest data ----
 cogtasks = create_data_collection(data_path = "examples/data", 
-                                  types=c("cog_test"))
+                                  types=c("cog"))
 
+# read cog task data ----
 cogtasks_df = read_csv(cogtasks$nonkey_files, col_names = c("wearit_uuid", "cogtask_json"))
+
+# apply simple filtering logic for JSON schema ----
+cogtasks_df_p = cogtasks_df %>%
+  mutate(first_char = substr(cogtask_json,1,1)) %>%
+  mutate(format_valid = ifelse(first_char == "{", FALSE, TRUE))
+
+# generate a table of valid cognitive task data to process -----
+cogtasks_df_valid <- cogtasks_df_p %>%
+  filter(format_valid) %>%
+  mutate(inferred_ios = wearit_uuid == toupper(wearit_uuid))
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# create a list of data frames from each expanded JSON ----
+coglookup = list()
+for(i in 1:nrow(cogtasks_df_valid)) {
+  print(i)
+  
+  # extract current row
+  cur_row = cogtasks_df_valid[i,]
+  
+  # for debugging
+  print("---------------------")
+  print(cur_row$wearit_uuid)
+  
+  # unpack json list
+  cur_row_df = jsonlite::fromJSON(cur_row$cogtask_json) %>%
+    mutate(wearit_uuid = cur_row$wearit_uuid) %>% # append the wearit_uuid for linking
+    mutate(flag_missing_params = ifelse(cogtask_trial_params == "{}", TRUE, FALSE)) %>% # flag missing params
+    select(order(colnames(.))) %>% # sort cols a-z
+    select(wearit_uuid, everything()) # bring wearit_uuid to the front for easy checking
+  
+  # echo cogtask name
+  print(cur_row_df$wearit_uuid[1])
+  print(cur_row_df$cogtask_name[1])
+  print(names(cur_row_df))
+  
+  # save dataframe
+  coglookup <- rlist::list.append(coglookup, cur_row_df)
+}
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# parse bug may be related to -----
+# https://stackoverflow.com/questions/34148619/lexical-error-inside-a-string-occurs-before-a-character-which-it-may-not
+
+# bind available data - coincidentally, all dot-memory
+dotmemory_df <- bind_rows(coglookup) %>%
+  select(order(colnames(.))) %>%
+  select(wearit_uuid, everything()) %>%
+  mutate(dt_date = anytime::anydate(time_stamp))
+
+# evaluate distribution of computed frames per second ----
+ggplot(dotmemory_df, aes(as.numeric(cogtask_cps))) + geom_histogram()
+ggplot(dotmemory_df, aes(as.numeric(cogtask_fps))) + geom_histogram()
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
