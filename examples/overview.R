@@ -41,6 +41,20 @@ dc$key_files
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+# TODO: write `reformat_keyfiles.R`
+
+allkeys = read_wearit_surveydata(dc$nonkey_files[1])$key_table
+
+# read single key file
+dc$key_files[1]
+sample_keyfile <- read_csv(dc$key_files[1], 
+                           col_names=c("key", "value")) %>%
+  mutate(is_ques_num = grepl("Q_", key)) %>%
+  mutate(wearit_col_qnum = ifelse(is_ques_num, key, NA)) %>%
+  full_join(allkeys)
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 # merge like files ----
 dc_stacked_package = merge_data_collection(fns=dc$nonkey_files)
 

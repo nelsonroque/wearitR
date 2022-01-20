@@ -4,9 +4,15 @@
 #' @importFrom dplyr arrange
 #' @importFrom readr read_csv
 #' @importFrom rlist list.append
-read_wearit_surveydata <- function(fn, output = c("key_table", "tidy_data")) {
+read_wearit_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data")) {
   # read in survey data with all headers ----
-  raw_df <- read_csv(fn, skip = 0)
+  
+  if(is.na(col_names)) {
+    raw_df <- read_csv(fn, skip = 0)
+  } else {
+    raw_df <- read_csv(fn, skip = 0, col_names = col_names)
+  }
+
   
   # Beeped_Survey_1_key <- read_csv("Downloads/wear_it_data_v2/Beeped_Survey_1_key.csv", col_names = c('key', 'value')) %>%
   #   mutate(question_label = grepl("Q_", key)) %>%
