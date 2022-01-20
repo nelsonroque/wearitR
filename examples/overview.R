@@ -43,35 +43,15 @@ dc$key_files
 
 # TODO: write `reformat_keyfiles.R`
 
+# read single key file ----
+# implication of current format: sort destroys mappings
 allkeys = read_wearit_surveydata(dc$nonkey_files[1])$key_table
-
-# read single key file
-dc$key_files[1]
-sample_keyfile <- read_csv(dc$key_files[1], 
-                           col_names=c("key", "value")) %>%
-  mutate(is_ques_num = grepl("Q_", key)) %>%
-  mutate(wearit_col_qnum = ifelse(is_ques_num, key, NA)) %>%
-  full_join(allkeys)
+near_codebook_keyfile = reformat_keyfiles(dc$key_files[1], allkeys)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # merge like files ----
 dc_stacked_package = merge_data_collection(fns=dc$nonkey_files)
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-# reformat key files ----
-reformat_keyfiles()
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-# create data quality reports ----
-
-# Simple
-example_simple_dataquality_report = skimr::skim(dc_stacked_dplyr)
-
-# Complex
-#dataReporter::visualize(dc_stacked_dplyr)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -140,5 +120,16 @@ ggplot(dotmemory_df, aes(as.numeric(cogtask_fps))) + geom_histogram()
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # create codebook ----
+# for each qnum echo question, and unique key/value mappings
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# create data quality reports ----
+
+# Simple
+example_simple_dataquality_report = skimr::skim(dc_stacked_dplyr)
+
+# Complex
+#dataReporter::visualize(dc_stacked_dplyr)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -10,11 +10,12 @@ Depends:
     R (>= 3.3),
     tidyverse,
     readr,
-    skimr,
-    dataReporter
+    zoo
 Imports: 
     tidyverse,
     readr,
+    zoo
+Suggests:
     skimr,
     dataReporter
 Encoding: UTF-8

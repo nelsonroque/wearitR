@@ -4,7 +4,7 @@
 \alias{reformat_keyfiles}
 \title{Read WearIT Survey data ----}
 \usage{
-reformat_keyfiles()
+reformat_keyfiles(fn, keytable)
 }
 \description{
 Read WearIT Survey data ----

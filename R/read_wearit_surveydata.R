@@ -12,12 +12,6 @@ read_wearit_surveydata <- function(fn, col_names=NA, output = c("key_table", "ti
   } else {
     raw_df <- read_csv(fn, skip = 0, col_names = col_names)
   }
-
-  
-  # Beeped_Survey_1_key <- read_csv("Downloads/wear_it_data_v2/Beeped_Survey_1_key.csv", col_names = c('key', 'value')) %>%
-  #   mutate(question_label = grepl("Q_", key)) %>%
-  #   mutate(wearit_col_qnum = ifelse(question_label == T, key, NA))
-  # 
   
   # read header all the ways ----
   tb_names_onread = names(raw_df)
