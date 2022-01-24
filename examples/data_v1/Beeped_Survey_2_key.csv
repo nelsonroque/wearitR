@@ -1,0 +1,131 @@
+Q_4509
+Sleepy/Tired,0
+Alert/Active,100
+Q_4510
+Bad,0
+Good,100
+Q_4511
+"Your home",1
+"Other person's home",2
+"Community/religious center",3
+"Work/volunteer center",4
+Restaurant/bar,5
+Gym,6
+"Medical office",7
+Outside,8
+Other,9
+Q_4512
+Nobody,1
+Spouse/Partner,2
+"Your child(ren)",3
+"Other family member(s)",4
+Friend(s),5
+Neighbor(s),6
+Acquaintance(s),7
+Stranger(s),8
+Pet(s),9
+Other,10
+Q_4513
+"No Response",-1
+Q_4514
+"Socializing (in-person)",1
+"Social media (e.g, Facebook)",2
+"Chores (household or shopping)",3
+"Self-care (e.g., eating, bathing, resting)",4
+"Taking care of someone",5
+"Watching TV",6
+Volunteering/working,7
+"Browsing internet",8
+"Physical activity/exercise",9
+"Mental activity (e.g., reading, puzzles)",10
+"Nothing special",11
+"Other activity",12
+Q_4515
+None,0
+"Very Much",100
+Q_4516
+"No Response",-1
+Q_4517
+"No, nothing special happened",1
+"Negative social interaction",2
+"Health issue (yours)",3
+"Health issue (spouse/partner)",4
+"A problem someone else had",5
+"A mistake you made",6
+"Financial problem",7
+"Heard bad or upsetting news",8
+"Time pressure / running late",9
+"Other stressful experience",10
+Q_4518
+"Stressful things don’t usually happen to me",1
+"I didn’t let problems get to me",2
+"I avoided stressful situations",3
+"I handled problems before they became stressful",4
+"Someone helped me",5
+"I got lucky",6
+"Other reason",7
+Q_4519
+"Not At All",0
+"Very Much",100
+Q_4520
+"Not At All",0
+Extremely,100
+Q_4521
+Worse,0
+Better,100
+Q_4522
+"No Response",-1
+Q_4523
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+Q_4524
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+Q_4525
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+Q_4526
+"No Response",-1
+Q_4527
+Yes,1
+No,2
+Q_4528
+"Distracting sound",1
+"Distracting lights",2
+"Distracting temperature",3
+"Social distractions",4
+"Other distractions",5
+Q_4529
+"No Response",-1
+Q_4993
+"No Response",-1
+"No Response",-1
+"No Response",-1
+"No Response",-1
+Q_5294
+"No, nothing stressful happened",1
+"Negative social interaction",2
+"Health issue (yours)",3
+"Health issue (spouse/partner)",4
+"A problem someone else had",5
+"A mistake you made",6
+"Financial problem",7
+"Heard bad or upsetting news",8
+"Time pressure / running late",9
+"Other stressful experience",10
