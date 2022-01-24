@@ -6,6 +6,12 @@
 \usage{
 merge_data_collection(fns = NA)
 }
+\value{
+Returns stacked dataframe
+}
 \description{
 Read WearIT Survey data ----
+}
+\details{
+Must specify which type of file to stack (key files, nonkey files, target files, or all files)
 }

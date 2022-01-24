@@ -11,7 +11,7 @@ read_wearit_surveydata(
 )
 }
 \arguments{
-\item{fn}{path to data file}
+\item{fn}{path to .csv data file}
 
 \item{col_names}{???}
 
@@ -21,6 +21,9 @@ read_wearit_surveydata(
 }
 \description{
 Read WearIT Survey data ----
+}
+\details{
+None
 }
 \author{
 Nelson Roque, \email{Nelson.Roque@ucf.edu}

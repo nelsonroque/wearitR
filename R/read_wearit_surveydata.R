@@ -10,7 +10,7 @@
 #' @param output type of table to be produced. Options include "key_table" 
 #' (produces list of question numbers, questions, and variable names/labels), "tidy_data" 
 #' (produces list including all data), or c("key_table", "tidy_data") to produce both. 
-#' @details 
+#' @details None
 read_wearit_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data")) {
   # read in survey data with all headers ----
   
