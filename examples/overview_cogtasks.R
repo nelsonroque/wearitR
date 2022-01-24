@@ -20,115 +20,25 @@ cogtasks_df_valid <- cogtasks_df_p %>%
   mutate(inferred_ios = wearit_uuid == toupper(wearit_uuid))
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# 
-# # create a list of data frames from each expanded JSON ----
-# coglookup = list()
-# for(i in 1:nrow(cogtasks_df_valid)) {
-#   print(i)
-#   
-#   # extract current row
-#   cur_row = cogtasks_df_valid[i,]
-#   
-#   # for debugging
-#   print("---------------------")
-#   print(cur_row$wearit_uuid)
-#   
-#   # unpack json list
-#   cur_row_df = jsonlite::fromJSON(cur_row$cogtask_json) %>%
-#     mutate(wearit_uuid = cur_row$wearit_uuid) %>% # append the wearit_uuid for linking
-#     mutate(flag_missing_params = ifelse(cogtask_trial_params == "{}", TRUE, FALSE)) %>% # flag missing params
-#     select(order(colnames(.))) %>% # sort cols a-z
-#     select(wearit_uuid, everything()) # bring wearit_uuid to the front for easy checking
-#   
-#   # echo cogtask name
-#   print(cur_row_df$wearit_uuid[1])
-#   print(cur_row_df$cogtask_name[1])
-#   print(names(cur_row_df))
-#   
-#   # save dataframe
-#   coglookup <- rlist::list.append(coglookup, cur_row_df)
-# }
 
+# code below, for now ----
+cogtask_workingrows = cogtasks_df_valid[1:7,]
 
-# get dates ----
-coglookup = list()
-#cog_metadata = tibble()
-#cur_metadata = tibble()
-for(i in 1:nrow(cogtasks_df_valid)) {
-  print(i)
-  
-  cur_row = cogtasks_df_valid[i,]
-  print(cur_row)
-  print(":------")
-  
-  jp = tryCatch(
-    expr = {
-      # Your code...
-      # goes here...
-      # ...
-      # filter by dates
-      jsonlite::fromJSON(cur_row)
-      # cur_metadata = tibble(session_start_ts = tss) %>%
-      #   mutate(wearit_uuid = cur_row$wearit_uuid)
-      #print(cur_metadata)
-      #rlist::list.append(coglookup, cur_metadata)
-    },
-    error = function(e){ 
-      # (Optional)
-      # Do this if an error is caught...
-      "ERROR"
-      #cur_metadata = tibble("wearit_uuid" = cur_row$wearit_uuid, "session_start_ts" = tss )
-    })
-      #print(cur_metadata)
-      #rlist::list.append(coglookup, cur_metadata)
-    # },
-    # warning = function(w){
-    #   # (Optional)
-    #   # Do this if an warning is caught...
-    #   tss = "WARNING"
-    #   cur_metadata = tibble("wearit_uuid" = cur_row$wearit_uuid, "session_start_ts" = tss )
-    #   #print(cur_metadata)
-    #  #rlist::list.append(coglookup, cur_metadata)
-    # }
-    # ,
-    # finally = function(f){
-    #   # (Optional)
-    #   # Do this if an warning is caught...
-    #   tss = "FINALLY"
-    #   cur_metadata = tibble("wearit_uuid" = cur_row$wearit_uuid, "session_start_ts" = tss )
-    #   print(cur_metadata)
-    #   coglookup = rlist::list.append(coglookup, cur_metadata)
-    # }
-  #)
-  
-  coglookup = rlist::list.append(coglookup, jp)
-  #print(cur_metadata)
-  
-  
-  #coglookup = rlist::list.append(coglookup, tss)
-}
-
-# look at all rows metadata ----
-session_dates = bind_rows(coglookup)
-# 
-# a = jsonlite::fromJSON(cogtasks_df_valid$cogtask_json[1])
-# 
-# # View the raw JSON - index 9 is a broken schema
-# listviewer::jsonedit(cogtasks_df_valid$cogtask_json[9], height = "800px", mode = "view")
+cogtask_read = cogtask_workingrows %>% 
+  mutate(json = map(cogtask_json, ~ jsonlite::fromJSON(.) %>% as.data.frame())) %>% 
+  unnest(json) %>%
+  arrange(cogtask_run_uuid)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# parse bug may be related to -----
-# https://stackoverflow.com/questions/34148619/lexical-error-inside-a-string-occurs-before-a-character-which-it-may-not
-# 
-# # bind available data - coincidentally, all dot-memory
-# dotmemory_df <- bind_rows(coglookup) %>%
-#   select(order(colnames(.))) %>%
-#   select(wearit_uuid, everything()) %>%
-#   mutate(dt_date = anytime::anydate(time_stamp))
-# 
-# #read_csv(col_types=c(col_character(), col_integer()))
-# 
-# # evaluate distribution of computed frames per second ----
-# ggplot(dotmemory_df, aes(as.numeric(cogtask_cps))) + geom_histogram()
-# ggplot(dotmemory_df, aes(as.numeric(cogtask_fps))) + geom_histogram()
+# quantify # of records without trial parameters (flag to WearIT team, Jessie)
+table(cogtask_read$cogtask_trial_params == "{}")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# look at response_time distribution for each cogtask ----
+ggplot(cogtask_read, aes(as.numeric(response_time))) + geom_histogram()
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# hook into auto-EDA package -----
