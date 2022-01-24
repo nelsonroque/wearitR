@@ -22,9 +22,9 @@ cogtasks_df_valid <- cogtasks_df_p %>%
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # code below, for now ----
-cogtask_workingrows = cogtasks_df_valid[1:7,]
+cogtasks_workingrows = cogtasks_df_valid[1:6,]
 
-cogtask_read = cogtask_workingrows %>% 
+cogtasks_unnested = cogtasks_workingrows %>% 
   mutate(json = map(cogtask_json, ~ jsonlite::fromJSON(.) %>% as.data.frame())) %>% 
   unnest(json) %>%
   arrange(cogtask_run_uuid)
@@ -32,12 +32,12 @@ cogtask_read = cogtask_workingrows %>%
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # quantify # of records without trial parameters (flag to WearIT team, Jessie)
-table(cogtask_read$cogtask_trial_params == "{}")
+table(cogtasks_unnested$cogtask_trial_params == "{}")
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # look at response_time distribution for each cogtask ----
-ggplot(cogtask_read, aes(as.numeric(response_time))) + geom_histogram()
+ggplot(cogtasks_unnested, aes(as.numeric(response_time))) + geom_histogram()
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
