@@ -97,6 +97,7 @@ Q_4481
 "No Response",-1
 "No Response",-1
 "No Response",-1
+"No Response",-1
 Q_4482
 "No Response",-1
 "No Response",-1
@@ -108,7 +109,9 @@ Q_4482
 "No Response",-1
 "No Response",-1
 "No Response",-1
+"No Response",-1
 Q_4483
+"No Response",-1
 "No Response",-1
 "No Response",-1
 "No Response",-1
@@ -131,3 +134,5 @@ Q_5295
 "Heard bad or upsetting news",8
 "Time pressure / running late",9
 "Other stressful experience",10
+Q_5303
+"No Response",-1

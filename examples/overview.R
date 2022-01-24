@@ -3,11 +3,11 @@ library(wearitR)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # repeat steps above with new function for two survey files -----
-beep_survey1_list = wearitR::read_wearit_surveydata("examples/data/1035_Beeped_Survey_1_2022-01-19.csv")
+beep_survey1_list = wearitR::read_wearit_surveydata("examples/data/1035_Beeped_Survey_1_2022-01-24.csv")
 beep_survey1_keytable = beep_survey1_list$key_table
 beep_survey1_tidydata = beep_survey1_list$tidy_data
 
-beep_survey2_list = wearitR::read_wearit_surveydata("examples/data/1035_Beeped_Survey_2_2022-01-19.csv")
+beep_survey2_list = wearitR::read_wearit_surveydata("examples/data/1035_Beeped_Survey_2_2022-01-24.csv")
 beep_survey2_keytable = beep_survey2_list$key_table
 beep_survey2_tidydata = beep_survey2_list$tidy_data
 

@@ -84,6 +84,7 @@ Q_4544
 "No Response",-1
 "No Response",-1
 "No Response",-1
+"No Response",-1
 Q_4545
 "No Response",-1
 "No Response",-1
@@ -95,7 +96,9 @@ Q_4545
 "No Response",-1
 "No Response",-1
 "No Response",-1
+"No Response",-1
 Q_4546
+"No Response",-1
 "No Response",-1
 "No Response",-1
 "No Response",-1
@@ -129,3 +132,5 @@ Q_5296
 "Heard bad or upsetting news",8
 "Time pressure / running late",9
 "Other stressful experience",10
+Q_5305
+"No Response",-1
