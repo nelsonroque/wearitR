@@ -4,6 +4,7 @@
 #' @importFrom dplyr arrange
 #' @importFrom readr read_csv
 #' @importFrom zoo na.locf
+#' \code{reformat_keyfiles} takes keytable as input; outputs dataframe 
 reformat_keyfiles <- function(fn, keytable) {
   keyfile <- read_csv(fn, 
                              col_names=c("key", "value")) %>%

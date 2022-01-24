@@ -10,6 +10,18 @@ read_wearit_surveydata(
   output = c("key_table", "tidy_data")
 )
 }
+\arguments{
+\item{fn}{path to data file}
+
+\item{col_names}{???}
+
+\item{output}{type of table to be produced. Options include "key_table" 
+(produces list of question numbers, questions, and variable names/labels), "tidy_data" 
+(produces list including all data), or c("key_table", "tidy_data") to produce both.}
+}
 \description{
 Read WearIT Survey data ----
+}
+\author{
+Nelson Roque, \email{Nelson.Roque@ucf.edu}
 }

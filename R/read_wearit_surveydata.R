@@ -1,9 +1,16 @@
 #' Read WearIT Survey data ----
+#' @author Nelson Roque, \email{Nelson.Roque@@ucf.edu}
 #' @export
 #' @importFrom tibble tibble
 #' @importFrom dplyr arrange
 #' @importFrom readr read_csv
 #' @importFrom rlist list.append
+#' @param fn path to .csv data file
+#' @param col_names ???
+#' @param output type of table to be produced. Options include "key_table" 
+#' (produces list of question numbers, questions, and variable names/labels), "tidy_data" 
+#' (produces list including all data), or c("key_table", "tidy_data") to produce both. 
+#' @details 
 read_wearit_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data")) {
   # read in survey data with all headers ----
   

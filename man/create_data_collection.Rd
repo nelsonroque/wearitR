@@ -6,6 +6,24 @@
 \usage{
 create_data_collection(data_path = NA, types = c())
 }
+\arguments{
+\item{data_path}{path to data file to be processed}
+
+\item{types}{type of data to to target. Options include "Beeped_Survey_1", 
+"Beeped_Survey_2","Beeped_Survey_3"...}
+}
+\value{
+Returns a list object containing lists of files within the specified path by data
+type (key files, nonkey files, target files, all files)
+}
 \description{
-Read WearIT Survey data ----
+\code{create_data_collection} takes path to data folder as input and produces
+ a list of files within the folder
+}
+\details{
+Finds like items and produces target_files, all_files, nonkey_files (survey files),
+and key_files (table of key, question number,...) will be useful to build pdf codebooks.
+}
+\author{
+Nelson Roque, \email{Nelson.Roque@ucf.edu}
 }
