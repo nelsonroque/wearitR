@@ -1,12 +1,21 @@
 library(wearitR)
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# What has been tried to parse cog data
-
+# Attempted approaches:
 # for loop
 # map, jsonlite::fromJSON, unnest
 # filtering weird strings
 # filtering backslashes
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+unnest_cogtask_data <- function(.data) {
+  cogtasks_unnested = .data %>% 
+    mutate(json = map(cogtask_json, ~ jsonlite::fromJSON(.) %>% as.data.frame())) %>% 
+    unnest(json) %>%
+    arrange(cogtask_run_uuid) %>%
+    select(-`Game Result`)
+  return(cogtasks_unnested)
+}
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -15,61 +24,39 @@ cogtasks = create_data_collection(data_path = "examples/data",
                                   types=c("cog"))
 
 # read cog task data ----
-cogtasks_df = read_csv(cogtasks$nonkey_files, col_names = c("wearit_uuid", "cogtask_json"))
+cogtasks_df = read_csv(cogtasks$nonkey_files)#, #col_names = c("wearit_uuid", "cogtask_json"))
 
 # apply simple filtering logic for JSON schema ----
 cogtasks_df_p = cogtasks_df %>%
-  mutate(first_char = substr(cogtask_json,1,1)) %>%
-  mutate(format_valid = ifelse(first_char == "{", FALSE, TRUE)) %>%
-  mutate(cogtask_json_r = gsub("\\\\", "\\\\\\\\", cogtask_json))
-  #mutate(cogtask_name = purrr::pluck(cogtask_json, "cogtask_name", .default = NA))
-
-# generate a table of valid cognitive task data to process -----
-cogtasks_df_valid <- cogtasks_df_p %>%
-  mutate(inferred_ios = wearit_uuid == toupper(wearit_uuid)) %>%
-  mutate(flag_weirdschema1 = grepl("\\\\Tools.js\\\\", cogtask_json)) %>%
-  mutate(flag_weirdschema2 = grepl("\\\\dotmemory.zip\\\\", cogtask_json)) %>%
-  mutate(flag_weirdschema3 = grepl("\\\\GameEngine.js\\\\", cogtask_json)) %>%
-  # mutate(flag_weirdschema4 = grepl("\\\\*.js", cogtask_json)) %>%
-  # mutate(flag_weirdschema5 = grepl("{\\\\*}", cogtask_json)) %>%
-  filter(format_valid) %>%
-  #filter(!flag_weirdschema4) %>%
-  filter(!flag_weirdschema1 & !flag_weirdschema2 & !flag_weirdschema3)
+  mutate(cogtask_json = gsub("\\\\", "", `Game Result`)) %>%
+  mutate(first_char = substr(`Game Result`,1,1)) %>%
+  mutate(format_valid = ifelse(first_char == "{", FALSE, TRUE))
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# code below, for now ----
-cogtasks_workingrows = cogtasks_df_valid#[1:6,]
+# get unique cogtask names -----
+table(cogtasks_df_p$`Cog Test Name`)
 
-cogtasks_unnested = cogtasks_workingrows %>% 
-  mutate(json = map(cogtask_json, ~ jsonlite::fromJSON(.) %>% as.data.frame())) %>% 
-  unnest(json) %>%
-  arrange(cogtask_run_uuid)
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# separate data from each cogtask -----
+cogtasks_dotmemory <- cogtasks_df_p %>% filter(`Cog Test Name` == "dotmemory")
+cogtasks_symbolsearch <- cogtasks_df_p %>% filter(`Cog Test Name` == "symbolsearch")
+cogtasks_shoppinglist <- cogtasks_df_p %>% filter(`Cog Test Name` == "shoppinglist")
+cogtasks_stroop <- cogtasks_df_p %>% filter(`Cog Test Name` == "stroop")
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# unstack cogtask json data -----
+cogtask_dotmemory_unstacked = unnest_cogtask_data(cogtasks_dotmemory)
+cogtask_symbolsearch_unstacked = unnest_cogtask_data(cogtasks_symbolsearch)
+cogtask_shoppinglist_unstacked = unnest_cogtask_data(cogtasks_shoppinglist)
+cogtask_stroop_unstacked = unnest_cogtask_data(cogtasks_stroop)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # quantify # of records without trial parameters (flag to WearIT team, Jessie)
-table(cogtasks_unnested$cogtask_trial_params == "{}")
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-# look at response_time distribution for each cogtask ----
-ggplot(cogtasks_unnested, aes(as.numeric(response_time))) + geom_histogram()
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-# other parse approach
-library(tidyjson)
-
-cogtasks_df_p$cogtask_json %>% spread_all
-#https://cran.r-project.org/web/packages/tidyjson/vignettes/introduction-to-tidyjson.html
-#try(map(x, chuck, 2, "elt", 10))
-
-cogtasks_unnested = cogtasks_df_p %>% 
-  mutate(json = map(cogtask_json_r, ~ jsonlite::fromJSON(.) %>% as.data.frame())) %>% 
-  unnest(json) %>%
-  arrange(cogtask_run_uuid)
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-# hook into auto-EDA package -----
+table(cogtask_dotmemory_unstacked$cogtask_trial_params == "{}")
+table(cogtask_symbolsearch_unstacked$cogtask_trial_params == "{}")
+table(cogtask_shoppinglist_unstacked$cogtask_trial_params == "{}")
+table(cogtask_stroop_unstacked$cogtask_trial_params == "{}")
