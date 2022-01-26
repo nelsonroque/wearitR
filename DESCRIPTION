@@ -10,11 +10,13 @@ Depends:
     R (>= 3.3),
     tidyverse,
     readr,
-    zoo
+    zoo,
+    jsonlite
 Imports: 
     tidyverse,
     readr,
-    zoo
+    zoo,
+    jsonlite
 Suggests:
     skimr,
     dataReporter
