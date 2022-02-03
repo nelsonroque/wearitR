@@ -52,7 +52,7 @@ cogtask_stroop_processcheck$all_records_processed
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # quantify # of records without trial parameters (flag to WearIT team, Jessie)
-prop.table(table(cogtask_dotmemory_unstacked$cogtask_trial_params == "{}"))
+prop.table(table(cogtask_dotmemory_unstacked$cogtask_trial_params == "{}")) # "{:-1}"))
 prop.table(table(cogtask_symbolsearch_unstacked$cogtask_trial_params == "{}"))
 prop.table(table(cogtask_shoppinglist_unstacked$cogtask_trial_params == "{}"))
 prop.table(table(cogtask_stroop_unstacked$cogtask_trial_params == "{}"))

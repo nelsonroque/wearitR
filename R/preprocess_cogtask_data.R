@@ -15,6 +15,7 @@ preprocess_cogtask_data <- function(data_path) {
   # read cog task data ----
   # pass in col names for easy processing thereafter
   cogtasks_df = read_csv(cogtasks$nonkey_files, 
+                         skip=1,
                          col_names = c("wearit_uuid", "cogtask_json_raw",
                                        "m2c2_cogtask", "participant_id",
                                        "device_model", "device_os", 
