@@ -1,0 +1,9 @@
+{
+  "study_id": "catslife",
+  "study_groupcode": "1035",
+  "cogtasks": ["dotmemory", "symbolsearch", "shoppinglist", "stroop"],
+  "surveys": [["Beeped_Survey_1", "Beeped_Survey_2", "Beeped_Survey_3"], 
+              "Intake_Survey", 
+              "Waking_Survey", 
+              "Wrap_Up_Survey"]
+}
