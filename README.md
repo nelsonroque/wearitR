@@ -1,8 +1,18 @@
 # wearitR
 
+-----
+
 An R package to simplify data preparation across WearIT platform exports. 
 
 `Disclaimer: This repository is not directly affiliated with the WearIT platform.`
+
+-----
+
+## Intended Usage of Package
+
+- The intended interface is leveraging/cloning one of our example pipelines (`template/catslife`) that contains a `data` folder (intended for all input data files exported from Wear-IT platform), an `output` folder (intended for any csv outputs from the processes described above), and a JSON configuration (`config.json`) containing relevant study datafile identifiers (survey ids, cognitive task names).
+
+See `templates/catslife/pipeline.R` for a sampling of functions in a brief demo.
 
 -----
 
@@ -36,14 +46,6 @@ An R package to simplify data preparation across WearIT platform exports.
 	- Description: ``` leveraging a config.json file, crawl a study and prepare survey data. ```
 - `run_study_datapipeline()`
 	- Description: ``` leveraging a config.json file, crawl a study and prepare all (survey, cogtask) data. ```
-
------
-
-## Intended Usage of Package
-
-- The intended interface is leveraging/cloning one of our example pipelines (`template/catslife`) that contains a `data` folder (intended for all input data files exported from Wear-IT platform), an `output` folder (intended for any csv outputs from the processes described above), and a JSON configuration (`config.json`) containing relevant study datafile identifiers (survey ids, cognitive task names).
-
-See `templates/catslife/pipeline.R` for a sampling of functions in a brief demo.
 
 -----
 
