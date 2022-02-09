@@ -19,7 +19,7 @@ An R package to simplify data preparation across WearIT platform exports.
 - `reformat_keyfiles()`
 	- Description: ``` reformat key files for easier querying. ```
 
-See `examples/overview.R` for a sampling of functions in a brief demo.
+See `templates/catslife/pipeline.R` for a sampling of functions in a brief demo.
 
 -----
 
