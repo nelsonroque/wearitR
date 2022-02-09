@@ -51,9 +51,9 @@ study_pipeline_survey <- function(data_path, config_path) {
       mutate(filenames = paste0(cur_survey_patterns, collapse=","))
     
     # output data from this survey ----
-    write_csv(simple_dataquality_report, paste0("output/wearitR_dataquality_report","_",cur_survey_fn,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
-    write_csv(near_codebook_keyfile, paste0("output/wearitR_codebook_report","_",cur_survey_fn,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
-    write_csv(dc_stacked_package, paste0("output/wearitR_survey_","_",cur_survey_fn,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
+    write_csv(simple_dataquality_report, paste0("output/wearitR_dataquality_report","_",session_ts,"_",cur_survey_fn,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
+    write_csv(near_codebook_keyfile, paste0("output/wearitR_codebook_report","_",session_ts,"_",cur_survey_fn,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
+    write_csv(dc_stacked_package, paste0("output/wearitR_survey","_",session_ts,"_",cur_survey_fn,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
     
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     

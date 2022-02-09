@@ -36,7 +36,7 @@ study_pipeline_cogtasks <- function(data_path, config_path) {
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # export data 
-    write_csv(cogtask_unstacked, paste0("output/wearitR_cogtask_unstacked","_",i,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
+    write_csv(cogtask_unstacked, paste0("output/wearitR_cogtask_unstacked","_",session_ts,"_",i,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
     #write_csv(cogtask_processcheck, paste0("output/wearitR_cogtask_processcheck","_",i,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
   }
 }
