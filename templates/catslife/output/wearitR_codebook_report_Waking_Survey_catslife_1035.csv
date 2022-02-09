@@ -1,0 +1,23 @@
+key,wearit_col_qnum,wearit_col_ques,wearit_col_label,filenames
+"No Response,-1",Q_4484,The following questions ask about your sleep last night.,info_sleep_quality,Waking_Survey
+"Not difficult,0",Q_4485,How difficult was it to fall asleep?,sleep_fall,Waking_Survey
+"Very difficult,100",Q_4485,How difficult was it to fall asleep?,sleep_fall,Waking_Survey
+"Very Poor,0",Q_4486,How was the quality of your sleep?,sleep_quality,Waking_Survey
+"Very Good,100",Q_4486,How was the quality of your sleep?,sleep_quality,Waking_Survey
+"No trouble,0",Q_4487,Did you have trouble staying asleep?,sleep_trouble,Waking_Survey
+"A lot of trouble,100",Q_4487,Did you have trouble staying asleep?,sleep_trouble,Waking_Survey
+"Not at all,0",Q_4488,Did you feel refreshed when you woke up?,sleep_refresh,Waking_Survey
+"Very Much,100",Q_4488,Did you feel refreshed when you woke up?,sleep_refresh,Waking_Survey
+"No Response,-1",Q_4489,The next questions ask about how you expect your day will be.,info_pleasant_expect,Waking_Survey
+"Not at all,0",Q_4490,"Overall, how stressful do you expect today will be?",stress_today,Waking_Survey
+"Extremely,100",Q_4490,"Overall, how stressful do you expect today will be?",stress_today,Waking_Survey
+"Not at all,0",Q_4491,"Overall, how pleasant do you expect today will be?",uplift_today,Waking_Survey
+"Very Much,100",Q_4491,"Overall, how pleasant do you expect today will be?",uplift_today,Waking_Survey
+NA,Participant ID,Participant ID,Participant ID,Waking_Survey
+NA,Survey Date Completed,Survey Date Completed,Survey Date Completed,Waking_Survey
+NA,Survey Date Submitted,Survey Date Submitted,Survey Date Submitted,Waking_Survey
+NA,...4,Survey Name,NA,Waking_Survey
+NA,External ID,NA,NA,Waking_Survey
+NA,Alert Times,NA,NA,Waking_Survey
+NA,Model,NA,NA,Waking_Survey
+NA,OS,NA,NA,Waking_Survey

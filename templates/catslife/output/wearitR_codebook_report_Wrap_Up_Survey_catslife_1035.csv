@@ -1,0 +1,70 @@
+key,wearit_col_qnum,wearit_col_ques,wearit_col_label,filenames
+"No Response,-1",Q_4492,About the smartphones:,depricated,Wrap_Up_Survey
+"Strongly agree,1",Q_4493,"With practice, the beeped  surveys became easier  and quicker to do.",wrap_up_easier,Wrap_Up_Survey
+"Agree,2",Q_4493,"With practice, the beeped  surveys became easier  and quicker to do.",wrap_up_easier,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4493,"With practice, the beeped  surveys became easier  and quicker to do.",wrap_up_easier,Wrap_Up_Survey
+"Disagree,4",Q_4493,"With practice, the beeped  surveys became easier  and quicker to do.",wrap_up_easier,Wrap_Up_Survey
+"Strongly disagree,5",Q_4493,"With practice, the beeped  surveys became easier  and quicker to do.",wrap_up_easier,Wrap_Up_Survey
+"Strongly agree,1",Q_4494,"After a while, I got better  at playing the brain  games.",wrap_up_better,Wrap_Up_Survey
+"Agree,2",Q_4494,"After a while, I got better  at playing the brain  games.",wrap_up_better,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4494,"After a while, I got better  at playing the brain  games.",wrap_up_better,Wrap_Up_Survey
+"Disagree,4",Q_4494,"After a while, I got better  at playing the brain  games.",wrap_up_better,Wrap_Up_Survey
+"Strongly disagree,5",Q_4494,"After a while, I got better  at playing the brain  games.",wrap_up_better,Wrap_Up_Survey
+"Strongly agree,1",Q_4495,Getting beeped 3 times a  day was annoying.,wrap_up_annoy,Wrap_Up_Survey
+"Agree,2",Q_4495,Getting beeped 3 times a  day was annoying.,wrap_up_annoy,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4495,Getting beeped 3 times a  day was annoying.,wrap_up_annoy,Wrap_Up_Survey
+"Disagree,4",Q_4495,Getting beeped 3 times a  day was annoying.,wrap_up_annoy,Wrap_Up_Survey
+"Strongly disagree,5",Q_4495,Getting beeped 3 times a  day was annoying.,wrap_up_annoy,Wrap_Up_Survey
+"Strongly agree,1",Q_4496,I learned something about  myself.,wrap_up_learn,Wrap_Up_Survey
+"Agree,2",Q_4496,I learned something about  myself.,wrap_up_learn,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4496,I learned something about  myself.,wrap_up_learn,Wrap_Up_Survey
+"Disagree,4",Q_4496,I learned something about  myself.,wrap_up_learn,Wrap_Up_Survey
+"Strongly disagree,5",Q_4496,I learned something about  myself.,wrap_up_learn,Wrap_Up_Survey
+"Strongly agree,1",Q_4497,I found the brain games to  be repetitive and/or  boring.,wrap_up_boring,Wrap_Up_Survey
+"Agree,2",Q_4497,I found the brain games to  be repetitive and/or  boring.,wrap_up_boring,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4497,I found the brain games to  be repetitive and/or  boring.,wrap_up_boring,Wrap_Up_Survey
+"Disagree,4",Q_4497,I found the brain games to  be repetitive and/or  boring.,wrap_up_boring,Wrap_Up_Survey
+"Strongly disagree,5",Q_4497,I found the brain games to  be repetitive and/or  boring.,wrap_up_boring,Wrap_Up_Survey
+"Strongly agree,1",Q_4498,I found the survey  questions to be repetitive  and/or boring.,wrap_up_survey_boring,Wrap_Up_Survey
+"Agree,2",Q_4498,I found the survey  questions to be repetitive  and/or boring.,wrap_up_survey_boring,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4498,I found the survey  questions to be repetitive  and/or boring.,wrap_up_survey_boring,Wrap_Up_Survey
+"Disagree,4",Q_4498,I found the survey  questions to be repetitive  and/or boring.,wrap_up_survey_boring,Wrap_Up_Survey
+"Strongly disagree,5",Q_4498,I found the survey  questions to be repetitive  and/or boring.,wrap_up_survey_boring,Wrap_Up_Survey
+"No Response,-1",Q_4499,About the study:,depricated,Wrap_Up_Survey
+"Strongly agree,1",Q_4500,The last two weeks were  pretty typical for me  (nothing unusual really  happened).,wrap_up_typical,Wrap_Up_Survey
+"Agree,2",Q_4500,The last two weeks were  pretty typical for me  (nothing unusual really  happened).,wrap_up_typical,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4500,The last two weeks were  pretty typical for me  (nothing unusual really  happened).,wrap_up_typical,Wrap_Up_Survey
+"Disagree,4",Q_4500,The last two weeks were  pretty typical for me  (nothing unusual really  happened).,wrap_up_typical,Wrap_Up_Survey
+"Strongly disagree,5",Q_4500,The last two weeks were  pretty typical for me  (nothing unusual really  happened).,wrap_up_typical,Wrap_Up_Survey
+"Strongly agree,1",Q_4501,I would recommend this  study to others.,wrap_up_recommend,Wrap_Up_Survey
+"Agree,2",Q_4501,I would recommend this  study to others.,wrap_up_recommend,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4501,I would recommend this  study to others.,wrap_up_recommend,Wrap_Up_Survey
+"Disagree,4",Q_4501,I would recommend this  study to others.,wrap_up_recommend,Wrap_Up_Survey
+"Strongly disagree,5",Q_4501,I would recommend this  study to others.,wrap_up_recommend,Wrap_Up_Survey
+"Strongly agree,1",Q_4502,Getting paid for  participating was one of  the main reasons I decided to join the smartphone  study.,wrap_up_paid,Wrap_Up_Survey
+"Agree,2",Q_4502,Getting paid for  participating was one of  the main reasons I decided to join the smartphone  study.,wrap_up_paid,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4502,Getting paid for  participating was one of  the main reasons I decided to join the smartphone  study.,wrap_up_paid,Wrap_Up_Survey
+"Disagree,4",Q_4502,Getting paid for  participating was one of  the main reasons I decided to join the smartphone  study.,wrap_up_paid,Wrap_Up_Survey
+"Strongly disagree,5",Q_4502,Getting paid for  participating was one of  the main reasons I decided to join the smartphone  study.,wrap_up_paid,Wrap_Up_Survey
+"Strongly agree,1",Q_4503,Getting feedback on how I  did on the games was one  of the main reasons I  decided to join the  smartphone study.,wrap_up_feedback,Wrap_Up_Survey
+"Agree,2",Q_4503,Getting feedback on how I  did on the games was one  of the main reasons I  decided to join the  smartphone study.,wrap_up_feedback,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4503,Getting feedback on how I  did on the games was one  of the main reasons I  decided to join the  smartphone study.,wrap_up_feedback,Wrap_Up_Survey
+"Disagree,4",Q_4503,Getting feedback on how I  did on the games was one  of the main reasons I  decided to join the  smartphone study.,wrap_up_feedback,Wrap_Up_Survey
+"Strongly disagree,5",Q_4503,Getting feedback on how I  did on the games was one  of the main reasons I  decided to join the  smartphone study.,wrap_up_feedback,Wrap_Up_Survey
+"Strongly agree,1",Q_4504,"I experienced something  unusually stressful over  the last two weeks (for  example, an illness, death  in the family, break up in a relationship.)",wrap_up_stress,Wrap_Up_Survey
+"Agree,2",Q_4504,"I experienced something  unusually stressful over  the last two weeks (for  example, an illness, death  in the family, break up in a relationship.)",wrap_up_stress,Wrap_Up_Survey
+"Neither Agree nor Disagree,3",Q_4504,"I experienced something  unusually stressful over  the last two weeks (for  example, an illness, death  in the family, break up in a relationship.)",wrap_up_stress,Wrap_Up_Survey
+"Disagree,4",Q_4504,"I experienced something  unusually stressful over  the last two weeks (for  example, an illness, death  in the family, break up in a relationship.)",wrap_up_stress,Wrap_Up_Survey
+"Strongly disagree,5",Q_4504,"I experienced something  unusually stressful over  the last two weeks (for  example, an illness, death  in the family, break up in a relationship.)",wrap_up_stress,Wrap_Up_Survey
+"%%,-1",Q_4505,Please list events below:,depricated,Wrap_Up_Survey
+"No Response,-1",Q_4506,End Block,end_block,Wrap_Up_Survey
+"No Response,-1",Q_4507,Please answer the following questions in regard to your experiences with the <b>smartphones</b>:,info_experience_smartphone,Wrap_Up_Survey
+"No Response,-1",Q_4508,Please answer the following questions in regard to your experiences with the <b>study as a whole</b>:,info_experience_study,Wrap_Up_Survey
+NA,Participant ID,Participant ID,Participant ID,Wrap_Up_Survey
+NA,Survey Date Completed,Survey Date Completed,Survey Date Completed,Wrap_Up_Survey
+NA,Survey Date Submitted,Survey Date Submitted,Survey Date Submitted,Wrap_Up_Survey
+NA,...4,Survey Name,NA,Wrap_Up_Survey
+NA,External ID,NA,NA,Wrap_Up_Survey
+NA,Alert Times,NA,NA,Wrap_Up_Survey
+NA,Model,NA,NA,Wrap_Up_Survey
+NA,OS,NA,NA,Wrap_Up_Survey
