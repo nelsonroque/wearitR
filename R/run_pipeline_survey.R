@@ -1,6 +1,6 @@
 #' Read WearIT Survey data ----
 #' @export
-study_pipeline_survey <- function(data_path, config_path) {
+run_pipeline_survey <- function(data_path, config_path) {
   
   # create session timestamp ----
   session_ts = str_replace_all(Sys.time(), "[[:punct:]]", "_")
@@ -21,7 +21,7 @@ study_pipeline_survey <- function(data_path, config_path) {
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # create data collection ----
-    dc = create_data_collection("data", types=cur_survey_patterns)
+    dc = list_csvs_bytype("data", types=cur_survey_patterns)
     
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
@@ -35,14 +35,14 @@ study_pipeline_survey <- function(data_path, config_path) {
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # list all keys, prepare codebook ---
-    all_keys = read_wearit_surveydata(dc$nonkey_files[1])$key_table
+    all_keys = read_surveydata(dc$nonkey_files[1])$key_table
     near_codebook_keyfile = reformat_keyfiles(dc$key_files[1], all_keys) %>%
       mutate(filenames = paste0(cur_survey_patterns, collapse=","))
     
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # merge like files ----
-    dc_stacked_package = merge_data_collection(fns=dc$nonkey_files)
+    dc_stacked_package = merge_csvs(fns=dc$nonkey_files)
     
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     

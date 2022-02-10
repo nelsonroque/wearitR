@@ -7,9 +7,8 @@
 reformat_keyfiles <- function(fn, keytable) {
   keyfile <- read_csv(fn, col_names=c("key", "value")) %>%
     mutate(is_ques_num = grepl("Q_", key)) %>%
-    mutate(wearit_col_qnum_tmp = ifelse(is_ques_num, key, NA))
-  
-  keyfile$wearit_col_qnum = zoo::na.locf(keyfile$wearit_col_qnum_tmp, fromLast = FALSE)
+    mutate(wearit_col_qnum_tmp = ifelse(is_ques_num, key, NA)) %>%
+    mutate(wearit_col_qnum = zoo::na.locf(wearit_col_qnum_tmp, fromLast = FALSE))
   
   # filter keyfile
   keyfile_restructured = keyfile %>%

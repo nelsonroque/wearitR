@@ -7,9 +7,9 @@
 #' @importFrom readr read_csv
 #' @importFrom jsonlite fromJSON
 #' @param data_path data path containing cogtest results export
-preprocess_cogtask_data <- function(data_path) {
+cogdata_preprocess <- function(data_path) {
   # create data collection of M2C2 cogtest data ----
-  cogtasks = create_data_collection(data_path = data_path, 
+  cogtasks = list_csvs_bytype(data_path = data_path, 
                                     types=c("cog"))
   
   # read cog task data ----

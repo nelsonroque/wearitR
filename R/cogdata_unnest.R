@@ -7,12 +7,12 @@
 #' @importFrom dplyr arrange
 #' @importFrom readr read_csv
 #' @importFrom jsonlite fromJSON
-#' @param data data object returned from `preprocess_cogtask_data()`
-unnest_cogtask_data <- function(.data) {
-  cogtasks_unnested = .data %>% 
+#' @param data data object returned from `cogdata_preprocess()`
+cogdata_unnest <- function(.data) {
+  unnested = .data %>% 
     mutate(json = map(cogtask_json, ~ jsonlite::fromJSON(.) %>% as.data.frame())) %>% 
     unnest(json) %>%
     arrange(cogtask_run_uuid) %>%
     select(-`cogtask_json_raw`)
-  return(cogtasks_unnested)
+  return(unnested)
 }

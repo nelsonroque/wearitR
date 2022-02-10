@@ -1,6 +1,6 @@
 #' Read WearIT Survey data ----
 #' 
-#' \code{create_data_collection} takes path to data folder as input and produces
+#' \code{list_csvs_bytype} takes path to data folder as input and produces
 #'  a list of files within the folder
 #' @author Nelson Roque, \email{Nelson.Roque@@ucf.edu}
 #' @export
@@ -14,21 +14,18 @@
 #' and key_files (table of key, question number,...) will be useful to build pdf codebooks.
 #' @return Returns a list object containing lists of files within the specified path by data
 #' type (key files, nonkey files, target files, all files)
-create_data_collection <- function(data_path=NA, types=c()) {
+list_csvs_bytype <- function(data_path=NA, types=c()) {
   
   if(is.na(data_path)) {
     stop("Oops - no `data_path` supplied")
   } else {
-    fns <- get_data_fns(data_path)
+    fns <- list_csvs(data_path)
     if(length(types) == 0) {
       target_files = fns[grepl("key", fns)]
     } else {
       target_files <- c()
       for(i in types) {
-        print(i)
-        print(":::::::::::")
         target_files = c(target_files, fns[grepl(i, fns)])
-        print(target_files)
       }
       
       ## Find all key and non-key files (used for auto-merging)

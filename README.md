@@ -19,32 +19,33 @@ See `templates/catslife/pipeline.R` for a sampling of functions in a brief demo.
 ## Function listing
 
 ### General Utilities
-- `get_data_fns()`
-	- Description: ``` Get vector of all filenames in a directory. ```
-- `read_wearit_surveydata()`
+
+- `read_surveydata()`
   - Description: ``` read Wear-It Platform raw exports ```
-- `create_data_collection()`
+- `list_csvs()`
+	- Description: ``` Get vector of all filenames in a directory. ```
+- `list_csvs_bytype()`
 	- Description: ``` Search for specific files and group them for tasks such as merging or comparison. ```
-- `merge_data_collection()`
+- `merge_csvs()`
 	- Description: ``` Concatenate to a single dataframe, the data n. ```
 - `reformat_keyfiles()`
 	- Description: ``` reformat key files for easier querying. ```
 
 ### Cognitive Task Data Utilities
-- `preprocess_cogtask_data()`
+- `cogdata_preprocess()`
 	- Description: ``` prepare initial cogtask data. ```
-- `unnest_cogtask_data()`
+- `cogdata_unnest()`
 	- Description: ``` unnest JSON cogtask data. ```
-- `parsecheck_cogtask_data()`
+- `cogdata_validation()`
 	- Description: ``` validate that the number of UUIDs matches in input and unnested cogtask data. ```
 	
 ### Pipeline functions
 
-- `study_pipeline_cogtasks()`
+- `run_pipeline_cogdata()`
 	- Description: ``` leveraging a config.json file, crawl a study and prepare cogtask data. ```
-- `study_pipeline_survey()`
+- `run_pipeline_survey()`
 	- Description: ``` leveraging a config.json file, crawl a study and prepare survey data. ```
-- `run_study_datapipeline()`
+- `run_pipeline()`
 	- Description: ``` leveraging a config.json file, crawl a study and prepare all (survey, cogtask) data. ```
 
 -----

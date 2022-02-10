@@ -3,7 +3,7 @@
 #' @export
 #' @param original_data original, pre-processed data
 #' @param unnested_data result of `unnest_cogtask_data()`
-parsecheck_cogtask_data <- function(original_data, unnested_data) {
+cogdata_validation <- function(original_data, unnested_data) {
   og_ids = unique(original_data$wearit_uuid)
   un_ids = unique(unnested_data$wearit_uuid)
   overlap_ids = intersect(og_ids, un_ids)
