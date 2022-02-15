@@ -8,6 +8,24 @@ An R package to simplify data preparation across WearIT platform exports.
 
 -----
 
+## Installation
+
+Run the code below to install the required packages in a fresh R environment.
+
+```{r}
+# list of packages required on machine if developing on this R Package ---
+packages_req_dev = c("rlist", "skimr", "tidyverse", "devtools") # optional: "dataReporter"
+
+# install them ---
+install.packages(packages_req_dev)
+
+# install `wearitR` package ---
+devtools::install_github("nelsonroque/wearitR")
+
+```
+
+-----
+
 ## Intended Usage of Package
 
 - The intended interface is leveraging/cloning one of our example pipelines (`template/catslife`) that contains a `data` folder (intended for all input data files exported from Wear-IT platform), an `output` folder (intended for any csv outputs from the processes described above), and a JSON configuration (`config.json`) containing relevant study datafile identifiers (survey ids, cognitive task names).
