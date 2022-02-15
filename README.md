@@ -13,7 +13,7 @@ An R package to simplify data preparation across WearIT platform exports.
 Run the code below to install the required packages in a fresh R environment.
 
 ```{r}
-# list of packages required on machine if developing on this R Package ---
+# list of packages required on machine ---
 packages_req_dev = c("rlist", "skimr", "tidyverse", "devtools") # optional: "dataReporter"
 
 # install them ---
@@ -21,7 +21,6 @@ install.packages(packages_req_dev)
 
 # install `wearitR` package ---
 devtools::install_github("nelsonroque/wearitR")
-
 ```
 
 -----
