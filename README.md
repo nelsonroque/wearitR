@@ -29,7 +29,7 @@ devtools::install_github("nelsonroque/wearitR")
 
 - The intended interface is leveraging/cloning one of our example pipelines (`template/catslife`) that contains a `data` folder (intended for all input data files exported from Wear-IT platform), an `output` folder (intended for any csv outputs from the processes described above), and a JSON configuration (`config.json`) containing relevant study datafile identifiers (survey ids, cognitive task names).
 
-See `templates/catslife/pipeline.R` for a sampling of functions in a brief demo.
+See `https://github.com/nelsonroque/wearitR_templates` for a sampling of functions in a brief demo.
 
 -----
 

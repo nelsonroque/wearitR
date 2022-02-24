@@ -10,13 +10,18 @@ run_pipeline_cogdata <- function(data_path, config_path) {
   
   # preprocess cog task data ----
   cogtasks_df_p = cogdata_preprocess(data_path = "data")
+  cogtasks_valid = cogtasks_df_p %>% filter(format_valid)
+  cogtasks_invalid = cogtasks_df_p %>% filter(!format_valid)
+  
+  # save separately all data deemed invalid ----
+  write_csv(cogtasks_invalid, paste0("output/wearitR_cogdata_INVALID","_",session_ts,"_",study_config$study_id,"_",study_config$study_groupcode, ".csv"))
   
   # get unique cogtask names -----
   table(cogtasks_df_p$m2c2_cogtask)
   
   for(i in unique(study_config$cogtasks)) {
     print(i)
-    cogtask_current <- cogtasks_df_p %>% filter(m2c2_cogtask == i)
+    cogtask_current <- cogtasks_valid %>% filter(m2c2_cogtask == i)
     
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     

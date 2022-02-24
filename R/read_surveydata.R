@@ -11,7 +11,7 @@
 #' (produces list of question numbers, questions, and variable names/labels), "tidy_data" 
 #' (produces list including all data), or c("key_table", "tidy_data") to produce both. 
 #' @details None
-read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data")) {
+read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data"), use_labels=TRUE) {
   # read in survey data with all headers ----
   
   if(is.na(col_names)) {
@@ -39,7 +39,11 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   
   # create new data file ----
   # read in the file again, now with the clean tidied headers of choice (labels, num, ques)
-  final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels)
+  if(use_labels) {
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels)
+  } else {
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_num)
+  }
   
   # build output list ----
   if(is.na(output)) {
