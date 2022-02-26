@@ -1,13 +1,16 @@
 #' Read WearIT Survey data ----
 #' @export
-read_studyconfig <- function(config_path, save_files=TRUE) {
+read_surveyconfig <- function(config_path) {
   
   # create session timestamp ----
   session_ts = str_replace_all(Sys.time(), "[[:punct:]]", "_")
   
   # read study config ----
   study_config = jsonlite::read_json(config_path)
-
+  
+  # https://wearables.vmhost.psu.edu/wearables-survey/Survey/blockStructure?s_id=65&g_id=1035
+  # https://wearables.vmhost.psu.edu/wearables-survey/Survey/group/1035
+  
   # configure API endpoints
   base_url = "https://wearables.vmhost.psu.edu/wearables-survey/Survey/"
   
@@ -17,23 +20,18 @@ read_studyconfig <- function(config_path, save_files=TRUE) {
   # read study data
   meta_api = glue::glue("{base_url}group/{group_code}")
   m_df = jsonlite::fromJSON(meta_api)
-  study_info_j = jsonlite::toJSON(m_df)
   
   # read survey data
   survey_api = glue::glue("{base_url}blockStructure?s_id={m_df$id}&g_id={group_code}")
   s_df = jsonlite::fromJSON(survey_api)
-  survey_info_j = jsonlite::toJSON(s_df)
   
-  # save list with all results from endpoint
-  out_list = list(study_info = m_df,
-                  study_info_j = study_info_j,
-                  survey_info = s_df,
-                  survey_info_j = survey_info_j)
-  
-  if(save_files) {
-    jsonlite::write_json(study_info_j, glue::glue("wearitR_study_config_{group_code}.json"))
-    jsonlite::write_json(survey_info_j, glue::glue("wearitR_survey_config_{group_code}.json"))
-  }
-
-  return(out_list)
+  return(list(study_info = m_df,
+              study_info_j = jsonlite::toJSON(m_df),
+              survey_info = s_df,
+              survey_info_j = jsonlite::toJSON(s_df)))
 }
+
+config_path = "todo/config.json"
+library(tidyverse)
+sc = read_surveyconfig(config_path)
+sc$study_info

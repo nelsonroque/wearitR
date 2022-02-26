@@ -4,7 +4,7 @@
 \alias{merge_csvs}
 \title{Read WearIT Survey data ----}
 \usage{
-merge_csvs(fns = NA)
+merge_csvs(fns = NA, use_labels = TRUE)
 }
 \value{
 Returns stacked dataframe

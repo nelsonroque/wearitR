@@ -4,7 +4,7 @@
 \alias{run_pipeline}
 \title{Read WearIT Survey data ----}
 \usage{
-run_pipeline(data_path, config_path)
+run_pipeline(data_path, config_path, use_labels = F)
 }
 \description{
 Read WearIT Survey data ----

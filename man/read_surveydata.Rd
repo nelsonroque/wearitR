@@ -4,7 +4,12 @@
 \alias{read_surveydata}
 \title{Read WearIT Survey data ----}
 \usage{
-read_surveydata(fn, col_names = NA, output = c("key_table", "tidy_data"))
+read_surveydata(
+  fn,
+  col_names = NA,
+  output = c("key_table", "tidy_data"),
+  use_labels = TRUE
+)
 }
 \arguments{
 \item{fn}{path to .csv data file}
