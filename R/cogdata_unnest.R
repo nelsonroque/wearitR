@@ -12,7 +12,7 @@ cogdata_unnest <- function(.data) {
   unnested = .data %>% 
     mutate(json = map(cogtask_json, ~ jsonlite::fromJSON(.) %>% as.data.frame())) %>% 
     unnest(json) %>%
-    arrange(cogtask_run_uuid) %>%
+    arrange(survey_date_submitted) %>%
     select(-`cogtask_json_raw`)
   return(unnested)
 }

@@ -16,23 +16,23 @@ read_studyconfig <- function(config_path, save_files=TRUE) {
   
   # read study data
   meta_api = glue::glue("{base_url}group/{group_code}")
-  m_df = jsonlite::fromJSON(meta_api)
-  study_info_j = jsonlite::toJSON(m_df)
+  meta_df = jsonlite::fromJSON(meta_api)
+  study_info_j = jsonlite::toJSON(meta_df)
   
   # read survey data
-  survey_api = glue::glue("{base_url}blockStructure?s_id={m_df$id}&g_id={group_code}")
-  s_df = jsonlite::fromJSON(survey_api)
-  survey_info_j = jsonlite::toJSON(s_df)
+  survey_api = glue::glue("{base_url}blockStructure?s_id={meta_df$id}&g_id={group_code}")
+  survey_df = jsonlite::fromJSON(survey_api)
+  survey_info_j = jsonlite::toJSON(survey_df)
   
   # save list with all results from endpoint
-  out_list = list(study_info = m_df,
+  out_list = list(study_info = meta_df,
                   study_info_j = study_info_j,
-                  survey_info = s_df,
+                  survey_info = survey_df,
                   survey_info_j = survey_info_j)
   
   if(save_files) {
-    jsonlite::write_json(study_info_j, glue::glue("wearitR_study_config_{group_code}.json"))
-    jsonlite::write_json(survey_info_j, glue::glue("wearitR_survey_config_{group_code}.json"))
+    jsonlite::write_json(meta_df, glue::glue("output/wearitR_config_study_{group_code}.json"))
+    jsonlite::write_json(survey_df, glue::glue("output/wearitR_config_survey_{group_code}.json"))
   }
 
   return(out_list)
