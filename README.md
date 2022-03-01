@@ -39,6 +39,8 @@ See `https://github.com/nelsonroque/wearitR_templates` for a sampling of functio
 
 - `read_surveydata()`
   - Description: ``` read Wear-It Platform raw exports ```
+- `read_studyconfig()`
+- Description: ``` Read WearIT Platform Raw (JSON) Study Protocol Feed from server. ```
 - `list_csvs()`
 	- Description: ``` Get vector of all filenames in a directory. ```
 - `list_csvs_bytype()`
