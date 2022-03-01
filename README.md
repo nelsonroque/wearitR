@@ -1,5 +1,5 @@
 # wearitR (version `0.0.0.3`)
-
+Package last updated: `Feb 26 2022`
 -----
 
 An R package to simplify data preparation across WearIT platform exports. 
@@ -64,7 +64,3 @@ See `https://github.com/nelsonroque/wearitR_templates` for a sampling of functio
 	- Description: ``` leveraging a config.json file, crawl a study and prepare survey data. ```
 - `run_pipeline()`
 	- Description: ``` leveraging a config.json file, crawl a study and prepare all (survey, cogtask) data. ```
-
------
-
-Package last updated: `Feb 26 2022`
