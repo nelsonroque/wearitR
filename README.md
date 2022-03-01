@@ -67,4 +67,4 @@ See `https://github.com/nelsonroque/wearitR_templates` for a sampling of functio
 
 -----
 
-Page last updated: `Feb 26 2022`
+Package last updated: `Feb 26 2022`
