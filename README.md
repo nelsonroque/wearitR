@@ -1,4 +1,4 @@
-# wearitR (version `0.0.0.2`)
+# wearitR (version `0.0.0.3`)
 
 -----
 
