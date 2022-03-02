@@ -15,9 +15,9 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   # read in survey data with all headers ----
   
   if(is.na(col_names)) {
-    raw_df <- read_csv(fn, skip = 0)
+    raw_df <- read_csv(fn, skip = 0, na = c("", "NA", "N//A"))
   } else {
-    raw_df <- read_csv(fn, skip = 0, col_names = col_names)
+    raw_df <- read_csv(fn, skip = 0, col_names = col_names, na = c("", "NA", "N//A"))
   }
   
   # read header all the ways ----
