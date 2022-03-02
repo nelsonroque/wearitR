@@ -15,9 +15,9 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   # read in survey data with all headers ----
   
   if(is.na(col_names)) {
-    raw_df <- read_csv(fn, skip = 0, na = c("", "NA", "N/A"))
+    raw_df <- read_csv(fn, skip = 0, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
   } else {
-    raw_df <- read_csv(fn, skip = 0, col_names = col_names, na = c("", "NA", "N/A"))
+    raw_df <- read_csv(fn, skip = 0, col_names = col_names, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
   }
   
   # read header all the ways ----
@@ -40,9 +40,9 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   # create new data file ----
   # read in the file again, now with the clean tidied headers of choice (labels, num, ques)
   if(use_labels) {
-    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels, na = c("", "NA", "N/A"))
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
   } else {
-    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_num, na = c("", "NA", "N/A"))
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_num, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
   }
   
   # build output list ----
