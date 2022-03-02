@@ -40,9 +40,9 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   # create new data file ----
   # read in the file again, now with the clean tidied headers of choice (labels, num, ques)
   if(use_labels) {
-    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels)
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels, na = c("", "NA", "N/A"))
   } else {
-    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_num)
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_num, na = c("", "NA", "N/A"))
   }
   
   # build output list ----
