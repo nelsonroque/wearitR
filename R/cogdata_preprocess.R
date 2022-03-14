@@ -18,6 +18,7 @@ cogdata_preprocess <- function(data_path) {
     expr = {
       cogtasks_df = read_csv(cogtasks$nonkey_files, 
                              #skip=1,
+                             #col_types = cols(), #(suprress messages)
                              col_names = c("wearit_uuid", "cogtask_json_raw",
                                            "m2c2_cogtask", "participant_id",
                                            "device_model", "device_os", 

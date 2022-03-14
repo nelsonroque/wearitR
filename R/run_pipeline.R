@@ -3,7 +3,24 @@
 run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE) {
   
   # download study config from WearIT server ----
-  study_config = read_studyconfig(config_path)
+  
+  tryCatch(
+    expr = {
+      study_config = read_studyconfig(config_path)
+      message("Successfully executed read_studyconfig().")
+    },
+    error = function(e){
+      message('`read_studyconfig()` Caught an error!')
+      print(e)
+    },
+    warning = function(w){
+      message('`read_studyconfig()` Caught a warning!')
+      print(w)
+    },
+    finally = {
+      message('`read_studyconfig()` All done, quitting.')
+    }
+  )    
   
   # try to run_pipeline_cogdata() ----
   tryCatch(
