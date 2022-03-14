@@ -7,18 +7,18 @@ run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE) {
   tryCatch(
     expr = {
       study_config = read_studyconfig(config_path)
-      message("Successfully executed read_studyconfig().")
+      message('[✅] SUCCESS | `read_studyconfig()`')
     },
     error = function(e){
-      message('`read_studyconfig()` Caught an error!')
+      message('[❌] ERROR | `read_studyconfig()`')
       print(e)
     },
     warning = function(w){
-      message('`read_studyconfig()` Caught a warning!')
+      message('[⚠️] WARNING | `read_studyconfig()`')
       print(w)
     },
     finally = {
-      message('`read_studyconfig()` All done, quitting.')
+      message('[✅] SUCCESS | `read_studyconfig()`')
     }
   )    
   
@@ -26,18 +26,18 @@ run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE) {
   tryCatch(
     expr = {
       run_pipeline_cogdata(data_path, config_path)
-      message("Successfully executed run_pipeline_cogdata().")
+      message('[✅] SUCCESS | `run_pipeline_cogdata()`')
     },
     error = function(e){
-      message('`run_pipeline_cogdata()` Caught an error!')
+      message('[❌] ERROR | `run_pipeline_cogdata()`')
       print(e)
     },
     warning = function(w){
-      message('`run_pipeline_cogdata()` Caught a warning!')
+      message('[⚠️] WARNING | `run_pipeline_cogdata()`')
       print(w)
     },
     finally = {
-      message('`run_pipeline_cogdata()` All done, quitting.')
+      message('[✅] SUCCESS | `run_pipeline_cogdata()`')
     }
   )    
   
@@ -45,18 +45,18 @@ run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE) {
   tryCatch(
     expr = {
       run_pipeline_survey(data_path, config_path, use_labels=use_labels)
-      message("Successfully executed run_pipeline_survey().")
+      message('[✅] SUCCESS | `run_pipeline_survey()`')
     },
     error = function(e){
-      message('`run_pipeline_survey()` Caught an error!')
+      message('[❌] ERROR | `run_pipeline_survey()`')
       print(e)
     },
     warning = function(w){
-      message('`run_pipeline_survey()` Caught a warning!')
+      message('[⚠️] WARNING | `run_pipeline_survey()`')
       print(w)
     },
     finally = {
-      message('`run_pipeline_survey()` All done, quitting.')
+      message('[✅] SUCCESS | `run_pipeline_survey()`')
     }
   )    
 
