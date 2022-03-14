@@ -24,6 +24,7 @@ cogdata_preprocess <- function(data_path) {
   # apply simple filtering logic for JSON schema ----
   cogtasks_df_p = cogtasks_df %>%
     mutate(cogtask_json = gsub("\\\\", "", `cogtask_json_raw`)) %>% # fix backslash problem
+    # potential fix - https://heds.nz/posts/convert-backslash-forward-slash-r-windows/
     mutate(first_char = substr(`cogtask_json_raw`,1,1)) %>% # validate first character is what is expected
     mutate(format_valid = ifelse(first_char == "{", FALSE, TRUE))
   

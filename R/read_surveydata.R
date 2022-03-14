@@ -34,9 +34,10 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   # create modified lookup table with tidied headers ----
   new_key_table = tibble(wearit_col_qnum = cols_for_keymerge_num, 
                          wearit_col_ques = cols_for_keymerge_ques, 
-                         wearit_col_label = cols_for_keymerge_labels) %>%
-    arrange(wearit_col_label)
-  
+                         wearit_col_label = cols_for_keymerge_labels)
+  # %>%
+  #   arrange(wearit_col_label)
+  # 
   # create new data file ----
   # read in the file again, now with the clean tidied headers of choice (labels, num, ques)
   if(use_labels) {
