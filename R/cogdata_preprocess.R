@@ -23,18 +23,18 @@ cogdata_preprocess <- function(data_path) {
                                            "m2c2_cogtask", "participant_id",
                                            "device_model", "device_os", 
                                            "survey_date_submitted", "survey_date_completed"))
-      message("Successfully executed cogdata_preprocess() `read_csv`.")
+      message('[✅] SUCCESS | `read_csv(cogtasks$nonkey_files)`')
     },
     error = function(e){
-      message('cogdata_preprocess() `read_csv` Caught an error!')
+      message('[❌] ERROR | `read_csv(cogtasks$nonkey_files)`')
       print(e)
     },
     warning = function(w){
-      message('cogdata_preprocess() `read_csv` Caught a warning!')
+      message('[⚠️] WARNING | `read_csv(cogtasks$nonkey_files)`')
       print(w)
     },
     finally = {
-      message('cogdata_preprocess() `read_csv` All done, quitting.')
+      message('[✅] SUCCESS | `read_csv(cogtasks$nonkey_files)`')
     }
   )
   
