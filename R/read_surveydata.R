@@ -24,12 +24,12 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   tb_names_onread = names(raw_df)
   tb_names_label = raw_df[1,] %>% unlist(.)
   tb_names_ques = raw_df[2,] %>% unlist(.)
-  first3_cols = c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3])
+  first3_cols = c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3], tb_names_ques[4])
   
   # create tidied headers ---
-  cols_for_keymerge_num = unname(c(first3_cols, tb_names_onread[4:length(tb_names_onread)]))
-  cols_for_keymerge_ques = unname(c(first3_cols, tb_names_ques[4:length(tb_names_ques)]))
-  cols_for_keymerge_labels = unname(c(first3_cols, tb_names_label[4:length(tb_names_label)]))
+  cols_for_keymerge_num = unname(c(first3_cols, tb_names_onread[5:length(tb_names_onread)]))
+  cols_for_keymerge_ques = unname(c(first3_cols, tb_names_ques[5:length(tb_names_ques)]))
+  cols_for_keymerge_labels = unname(c(first3_cols, tb_names_label[5:length(tb_names_label)]))
   
   # create modified lookup table with tidied headers ----
   new_key_table = tibble(wearit_col_qnum = cols_for_keymerge_num, 
