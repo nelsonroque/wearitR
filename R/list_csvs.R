@@ -7,7 +7,7 @@ list_csvs <- function(data_path=NA) {
   if(is.na(data_path)) {
     error("Oops - no `data_path` supplied")
   } else {
-    fl = list.files(pattern="*.csv", 
+    fl = list.files(pattern=".csv", 
                     path=data_path, 
                     recursive = T, 
                     full.names = T)
