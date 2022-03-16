@@ -21,7 +21,7 @@ run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE) {
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # create data collection ----
-    dc = list_csvs_bytype("data", types=cur_survey_patterns)
+    dc = list_csvs_bytype(data_path, types=cur_survey_patterns)
     
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
