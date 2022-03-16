@@ -31,9 +31,7 @@ list_csvs_bytype <- function(data_path=NA, types=c()) {
       ## Find all key and non-key files (used for auto-merging)
       key_files <- ""
       key_files <- target_files[grepl("_key", target_files)]
-      message("Key files: " + key_files)
       nonkey_files <- target_files[!grepl("_key", target_files)]
-      message("Non-key files: " + key_files)
       if(length(key_files) == 0) {
         message("No `Wear-IT` key files found. Subsequent linking operations via `wearitR` may be limited. Download key file (if necessary) from Wear-IT Platform.")
       }
