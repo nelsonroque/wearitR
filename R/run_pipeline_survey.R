@@ -1,6 +1,6 @@
 #' Read WearIT Survey data ----
 #' @export
-run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE) {
+run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE, drop_deprecated=TRUE) {
   
   # create session timestamp ----
   session_ts = str_replace_all(Sys.time(), "[[:punct:]]", "_")
@@ -42,7 +42,9 @@ run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE) {
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # merge like files ----
-    dc_stacked_package = merge_csvs(fns=dc$nonkey_files, use_labels=use_labels) 
+    dc_stacked_package = merge_csvs(fns=dc$nonkey_files, 
+                                    use_labels=use_labels, 
+                                    drop_deprecated=drop_deprecated) 
     
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
