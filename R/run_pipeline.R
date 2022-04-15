@@ -1,6 +1,6 @@
 #' Read WearIT Survey data ----
 #' @export
-run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE) {
+run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE, drop_deprecated=TRUE) {
   
   # download study config from WearIT server ----
   
@@ -44,7 +44,7 @@ run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE) {
   # try to run_pipeline_survey() ----
   tryCatch(
     expr = {
-      run_pipeline_survey(data_path, config_path, use_labels=use_labels)
+      run_pipeline_survey(data_path, config_path, use_labels=use_labels, drop_deprecated=drop_deprecated)
       message('[✅] SUCCESS | `run_pipeline_survey()`')
     },
     error = function(e){
