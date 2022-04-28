@@ -24,13 +24,24 @@ cogdata_preprocess <- function(data_path) {
                                            "m2c2_cogtask", "participant_id",
                                            "device_model", "device_os", 
                                            "survey_date_submitted", "survey_date_completed"))
+      # apply simple filtering logic for JSON schema ----
+      cogtasks_df_p = cogtasks_df %>%
+        mutate(cogtask_json = gsub("\\\\", "", `cogtask_json_raw`)) %>% # fix backslash problem
+        # potential fix - https://heds.nz/posts/convert-backslash-forward-slash-r-windows/
+        mutate(first_char = substr(`cogtask_json_raw`,1,1)) %>% # validate first character is what is expected
+        mutate(extract_firstchar = stringi::stri_sub(`cogtask_json_raw`,1,1)) %>%
+        mutate(extract_lastchar = stringi::stri_sub(`cogtask_json_raw`,-1)) %>%
+        mutate(format_valid = ifelse(extract_firstchar == "[" & extract_lastchar == "]", TRUE, FALSE))
+      
       message('[✅] SUCCESS | `read_csv(cogtasks$nonkey_files)`')
     },
     error = function(e){
+      cogtasks_df_p = tibble()
       message('[❌] ERROR | `read_csv(cogtasks$nonkey_files)`')
       print(e)
     },
     warning = function(w){
+      cogtasks_df_p = tibble()
       message('[⚠️] WARNING | `read_csv(cogtasks$nonkey_files)`')
       print(w)
     },
@@ -38,15 +49,6 @@ cogdata_preprocess <- function(data_path) {
       message('[✅] SUCCESS | `read_csv(cogtasks$nonkey_files)`')
     }
   )
-  
-  # apply simple filtering logic for JSON schema ----
-  cogtasks_df_p = cogtasks_df %>%
-    mutate(cogtask_json = gsub("\\\\", "", `cogtask_json_raw`)) %>% # fix backslash problem
-    # potential fix - https://heds.nz/posts/convert-backslash-forward-slash-r-windows/
-    mutate(first_char = substr(`cogtask_json_raw`,1,1)) %>% # validate first character is what is expected
-    mutate(extract_firstchar = stringi::stri_sub(`cogtask_json_raw`,1,1)) %>%
-    mutate(extract_lastchar = stringi::stri_sub(`cogtask_json_raw`,-1)) %>%
-    mutate(format_valid = ifelse(extract_firstchar == "[" & extract_lastchar == "]", TRUE, FALSE))
   
   return(cogtasks_df_p)
 }
