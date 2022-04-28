@@ -43,7 +43,7 @@ list_csvs_bytype <- function(data_path=NA, types=c()) {
                   nonkey_files = nonkey_files,
                   target_files = target_files)
   
-  message(out_list)
+  #message(out_list)
   
   return(out_list)
 }
