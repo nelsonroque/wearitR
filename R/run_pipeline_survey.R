@@ -13,8 +13,8 @@ run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE, drop_de
   all_codebooks = tibble()
   all_reports = tibble()
   for (i in 1:length(study_config$surveys)) {
-    print("-------")
-    print(i)
+    print(study_config$surveys[[i]])
+    
     cur_survey_patterns = study_config$surveys[[i]] %>% unlist(.)
     cur_survey_fn = paste0(cur_survey_patterns, collapse="_")
     
