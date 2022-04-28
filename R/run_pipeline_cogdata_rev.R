@@ -34,6 +34,11 @@ run_pipeline_cogdata_rev <- function(data_path, config_path) {
   
   if(exists("cogtasks_df")) {
     # apply simple filtering logic for JSON schema ----
+    names(cogtasks_df) <- c("wearit_uuid", "cogtask_json_raw",
+                            "m2c2_cogtask", "participant_id",
+                            "device_model", "device_os", 
+                            "survey_date_submitted", "survey_date_completed")
+    
     cogtasks_df_p = cogtasks_df %>%
       mutate(cogtask_json = gsub("\\\\", "", `cogtask_json_raw`)) %>% # fix backslash problem
       mutate(extract_firstchar = stringi::stri_sub(`cogtask_json_raw`,1,1)) %>%

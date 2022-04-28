@@ -34,6 +34,10 @@ cogdata_preprocess <- function(data_path) {
   )
 
   if(exists("cogtasks_df")) {
+    names(cogtasks_df) <- c("wearit_uuid", "cogtask_json_raw",
+                            "m2c2_cogtask", "participant_id",
+                            "device_model", "device_os", 
+                            "survey_date_submitted", "survey_date_completed")
     # apply simple filtering logic for JSON schema ----
   cogtasks_df_p = cogtasks_df %>%
     mutate(cogtask_json = gsub("\\\\", "", `cogtask_json_raw`)) %>% # fix backslash problem
