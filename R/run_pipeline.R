@@ -18,7 +18,7 @@ run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE, drop
       print(w)
     },
     finally = {
-      message('[✅] SUCCESS | `read_studyconfig()`')
+      message('[✅] EXECUTION COMPLETE | `read_studyconfig()`')
     }
   )    
   
@@ -37,7 +37,7 @@ run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE, drop
       print(w)
     },
     finally = {
-      message('[✅] SUCCESS | `run_pipeline_cogdata()`')
+      message('[✅] EXECUTION COMPLETE | `run_pipeline_cogdata()`')
     }
   )    
   
@@ -56,7 +56,7 @@ run_pipeline <- function(data_path, config_path, use_labels=T, silent=TRUE, drop
       print(w)
     },
     finally = {
-      message('[✅] SUCCESS | `run_pipeline_survey()`')
+      message('[✅] EXECUTION COMPLETE | `run_pipeline_survey()`')
     }
   )    
 
