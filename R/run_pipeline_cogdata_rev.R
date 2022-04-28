@@ -14,23 +14,7 @@ run_pipeline_cogdata_rev <- function(data_path, config_path) {
   
   # read cog task data ----
   # pass in col names for easy processing thereafter
-  tryCatch(
-    expr = {
       cogtasks_df = read_csv(cogtasks$nonkey_files)
-      message('[✅] SUCCESS | `read_csv(cogtasks$nonkey_files)`')
-    },
-    error = function(e){
-      message('[❌] ERROR | `read_csv(cogtasks$nonkey_files)`')
-      print(e)
-    },
-    warning = function(w){
-      message('[⚠️] WARNING | `read_csv(cogtasks$nonkey_files)`')
-      print(w)
-    },
-    finally = {
-      message('[✅] EXECUTION COMPLETE |  `read_csv(cogtasks$nonkey_files)`')
-    }
-  )
   
   if(exists("cogtasks_df")) {
     # apply simple filtering logic for JSON schema ----
