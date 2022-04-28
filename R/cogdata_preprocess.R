@@ -17,22 +17,18 @@ cogdata_preprocess <- function(data_path) {
   # pass in col names for easy processing thereafter
   tryCatch(
     expr = {
-      cogtasks_df = read_csv(cogtasks$nonkey_files, 
-                             #skip=1,
-                             #col_types = cols(), #(suprress messages)
-                             col_names = c("wearit_uuid", "cogtask_json_raw",
-                                           "m2c2_cogtask", "participant_id",
-                                           "device_model", "device_os", 
-                                           "survey_date_submitted", "survey_date_completed"))     
+      cogtasks_df = read_csv(cogtasks$nonkey_files)
+      names(cogtasks_df) <- c("wearit_uuid", 
+                              "cogtask_json_raw", "m2c2_cogtask", "participant_id", 
+                              "device_model", "device_os", "survey_date_submitted", 
+                              "survey_date_completed")
       message('[✅] SUCCESS | `read_csv(cogtasks$nonkey_files)`')
     },
     error = function(e){
-      cogtasks_df_p = tibble()
       message('[❌] ERROR | `read_csv(cogtasks$nonkey_files)`')
       print(e)
     },
     warning = function(w){
-      cogtasks_df_p = tibble()
       message('[⚠️] WARNING | `read_csv(cogtasks$nonkey_files)`')
       print(w)
     },
@@ -51,7 +47,8 @@ cogdata_preprocess <- function(data_path) {
     mutate(extract_lastchar = stringi::stri_sub(`cogtask_json_raw`,-1)) %>%
     mutate(format_valid = ifelse(extract_firstchar == "[" & extract_lastchar == "]", TRUE, FALSE))
   } else {
-    cogtasks_df_p = tibble(error="issue with read_csv(cogtasks$nonkey_files)")
+    cogtasks_df_p = tibble(error="issue with read_csv(cogtasks$nonkey_files)",
+                           halt=TRUE)
   }
 
   
