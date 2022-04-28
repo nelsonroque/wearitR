@@ -6,6 +6,7 @@
 #' @importFrom dplyr arrange
 #' @importFrom readr read_csv
 #' @importFrom jsonlite fromJSON
+#' @importFrom stringi stri_sub
 #' @param data_path data path containing cogtest results export
 cogdata_preprocess <- function(data_path) {
   # create data collection of M2C2 cogtest data ----
@@ -43,7 +44,9 @@ cogdata_preprocess <- function(data_path) {
     mutate(cogtask_json = gsub("\\\\", "", `cogtask_json_raw`)) %>% # fix backslash problem
     # potential fix - https://heds.nz/posts/convert-backslash-forward-slash-r-windows/
     mutate(first_char = substr(`cogtask_json_raw`,1,1)) %>% # validate first character is what is expected
-    mutate(format_valid = ifelse(first_char == "{", FALSE, TRUE))
+    mutate(extract_firstchar = stringi::stri_sub(`cogtask_json_raw`,1,1)) %>%
+    mutate(extract_lastchar = stringi::stri_sub(`cogtask_json_raw`,-1)) %>%
+    mutate(format_valid = ifelse(extract_firstchar == "[" & extract_lastchar == "]", TRUE, FALSE))
   
   return(cogtasks_df_p)
 }
