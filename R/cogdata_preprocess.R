@@ -48,7 +48,7 @@ cogdata_preprocess <- function(data_path) {
     mutate(format_valid = ifelse(extract_firstchar == "[" & extract_lastchar == "]", TRUE, FALSE))
   } else {
     cogtasks_df_p = tibble(error="issue with read_csv(cogtasks$nonkey_files)",
-                           halt=TRUE)
+                           format_valid=FALSE)
   }
 
   
