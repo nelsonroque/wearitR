@@ -16,7 +16,7 @@ run_pipeline_cogdata <- function(data_path, config_path) {
   # pass in col names for easy processing thereafter
   cogtasks_df = read_csv(cogtasks$nonkey_files)
   
-  if(exists("cogtasks_df", where = .GlobalEnv)) {
+  if(nrow(cogtasks_df) > 0) {
     # apply simple filtering logic for JSON schema ----
     names(cogtasks_df) <- c("wearit_uuid", "cogtask_json_raw",
                             "m2c2_cogtask", "participant_id",

@@ -1,6 +1,6 @@
 Package: wearitR
 Title: Pre-processing of WearIT Platform Data
-Version: 0.0.0.70
+Version: 0.0.0.71
 Authors@R: c(person("Nelson", "Roque", , "nelson.roque@ucf.edu", role = c("aut", "cre")))
 Description: 'wearitR' is a package that works to tidy data from the WearIT Platform into common data representations.
 License: MIT
