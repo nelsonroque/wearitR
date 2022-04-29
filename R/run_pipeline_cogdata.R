@@ -9,7 +9,7 @@ run_pipeline_cogdata <- function(data_path, config_path) {
   study_config = jsonlite::read_json(config_path)
   
   # preprocess cog task data ----
-  cogtasks_df_p = cogdata_preprocess(data_path = "data") # pass in OS
+  cogtasks_df_p = cogdata_preprocess(data_path = data_path)
   cogtasks_valid = cogtasks_df_p %>% filter(format_valid)
   cogtasks_invalid = cogtasks_df_p %>% filter(!format_valid)
   
