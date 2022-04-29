@@ -1,5 +1,5 @@
 # wearitR
-Package last updated: `April 29 2022` | (version `0.0.0.69`)
+Package last updated: `April 29 2022` | (version `0.0.0.70`)
 See [Changelog](changelog.md) for full details.
 ----- 
 

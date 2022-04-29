@@ -3,6 +3,8 @@
 
 ## Changelog
 
+  - 0.0.0.70
+    - check for existence of `cogtasks_df` in GlobalEnv
   - 0.0.0.69
     - check for existence of `cogtasks_df` in GlobalEnv
   - 0.0.0.68
