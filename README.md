@@ -1,6 +1,6 @@
 # wearitR
 Package last updated: `April 29 2022` | (version `0.0.0.67`)
------
+----- 
 
 An R package to simplify data preparation across WearIT platform exports. 
 
@@ -40,7 +40,7 @@ See `https://github.com/nelsonroque/wearitR_templates` for a sampling of functio
 - `read_surveydata()`
   - Description: ``` read Wear-It Platform raw exports ```
 - `read_studyconfig()`
-- Description: ``` Read WearIT Platform Raw (JSON) Study Protocol Feed from server. ```
+  - Description: ``` Read WearIT Platform Raw (JSON) Study Protocol Feed from server. ```
 - `list_csvs()`
 	- Description: ``` Get vector of all filenames in a directory. ```
 - `list_csvs_bytype()`
@@ -66,3 +66,20 @@ See `https://github.com/nelsonroque/wearitR_templates` for a sampling of functio
 	- Description: ``` leveraging a config.json file, crawl a study and prepare survey data. ```
 - `run_pipeline()`
 	- Description: ``` leveraging a config.json file, crawl a study and prepare all (survey, cogtask) data. ```
+	
+	
+### Sample `config.json`
+
+```{json}
+{
+  "study_id": "agingstudy",
+  "study_groupcode": "9999",
+  "cogtasks": ["dotmemory", "symbolsearch", "shoppinglist", "stroop"],
+  "surveys": [["Beeped_Survey_1", 
+  "Beeped_Survey_2", 
+  "Beeped_Survey_3"], 
+              "Intake_Survey", 
+              "Waking_Survey", 
+              "Wrap_Up_Survey"]
+}
+```
