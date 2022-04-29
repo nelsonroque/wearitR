@@ -33,7 +33,7 @@ cogdata_preprocess <- function(data_path) {
     }
   )
 
-  if(exists("cogtasks_df")) {
+  if(exists("cogtasks_df", where = .GlobalEnv)) {
     names(cogtasks_df) <- c("wearit_uuid", "cogtask_json_raw",
                             "m2c2_cogtask", "participant_id",
                             "device_model", "device_os", 
