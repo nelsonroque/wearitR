@@ -8,8 +8,31 @@ run_pipeline_cogdata <- function(data_path, config_path) {
   # read study config ----
   study_config = jsonlite::read_json(config_path)
   
-  # preprocess cog task data ----
-  cogtasks_df_p = cogdata_preprocess(data_path = data_path)
+  # create data collection of M2C2 cogtest data ----
+  cogtasks = list_csvs_bytype(data_path = data_path, 
+                              types=c("cog"))
+  
+  # read cog task data ----
+  # pass in col names for easy processing thereafter
+      cogtasks_df = read_csv(cogtasks$nonkey_files)
+  
+  if(exists("cogtasks_df")) {
+    # apply simple filtering logic for JSON schema ----
+    names(cogtasks_df) <- c("wearit_uuid", "cogtask_json_raw",
+                            "m2c2_cogtask", "participant_id",
+                            "device_model", "device_os", 
+                            "survey_date_submitted", "survey_date_completed")
+    
+    cogtasks_df_p = cogtasks_df %>%
+      mutate(cogtask_json = gsub("\\\\", "", `cogtask_json_raw`)) %>% # fix backslash problem
+      mutate(extract_firstchar = stringi::stri_sub(`cogtask_json_raw`,1,1)) %>%
+      mutate(extract_lastchar = stringi::stri_sub(`cogtask_json_raw`,-1)) %>%
+      mutate(format_valid = ifelse(extract_firstchar == "[" & extract_lastchar == "]", TRUE, FALSE))
+  } else {
+    cogtasks_df_p = tibble(error="issue with read_csv(cogtasks$nonkey_files)",
+                           format_valid=FALSE)
+  }
+  
   cogtasks_valid = cogtasks_df_p %>% filter(format_valid)
   cogtasks_invalid = cogtasks_df_p %>% filter(!format_valid)
   
@@ -18,6 +41,8 @@ run_pipeline_cogdata <- function(data_path, config_path) {
   
   # get unique cogtask names -----
   table(cogtasks_df_p$m2c2_cogtask)
+  
+  
   
   for(i in unique(study_config$cogtasks)) {
     print(i)
