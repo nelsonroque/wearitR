@@ -46,6 +46,7 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   }
   
   # build output list ----
+  # check for any missing
   if(is.na(output)) {
     out_list = final_df
   } else {
