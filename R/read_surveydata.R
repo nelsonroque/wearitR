@@ -13,18 +13,18 @@
 #' @details None
 read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data"), use_labels=TRUE) {
   # read in survey data with all headers ----
-  
   if(is.na(col_names)) {
-    raw_df <- read_csv(fn, skip = 0, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
+    raw_df <- read_csv(fn, skip = 0, na = c("", "NA", "N/A"), 
+    col_types = cols(.default = "c"))
   } else {
-    raw_df <- read_csv(fn, skip = 0, col_names = col_names, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
+    raw_df <- read_csv(fn, skip = 0, col_names = col_names, 
+    na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
   }
-  
   # read header all the ways ----
-  tb_names_onread = names(raw_df)
-  tb_names_label = raw_df[1,] %>% unlist(.)
-  tb_names_ques = raw_df[2,] %>% unlist(.)
-  first3_cols = c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3], tb_names_ques[4])
+  tb_names_onread <- names(raw_df)
+  tb_names_label <- raw_df[1,] %>% unlist(.)
+  tb_names_ques <- raw_df[2,] %>% unlist(.)
+  first3_cols <- c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3], tb_names_ques[4])
   
   # create tidied headers ---
   cols_for_keymerge_num = unname(c(first3_cols, tb_names_onread[5:length(tb_names_onread)]))
@@ -40,22 +40,24 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   # create new data file ----
   # read in the file again, now with the clean tidied headers of choice (labels, num, ques)
   if(use_labels) {
-    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_labels, 
+              na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
   } else {
-    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_num, na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
+    final_df <- read_csv(fn, skip = 3, col_names = cols_for_keymerge_num, 
+              na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
   }
-  
   # build output list ----
   # check for any missing
-  if(is.null(output) | length(output) == 0) {
-    out_list = final_df # by default return data.frame
+  if(is.null(output) | length(output) == 0 | is.na(output)) {
+    print("TEST: is.null(), length == 0, is.na()")
+    out_list <- final_df # by default return data.frame
   } else {
-    out_list = list()
+    out_list <- list()
     if("key_table" %in% output) {
-      out_list = list.append(out_list, key_table = new_key_table)
+      out_list <- list.append(out_list, key_table = new_key_table)
     }
     if("tidy_data" %in% output) {
-      out_list = list.append(out_list, tidy_data = final_df)
+      out_list <- list.append(out_list, tidy_data = final_df)
     }
   }
   

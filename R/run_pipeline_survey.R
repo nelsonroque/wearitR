@@ -35,7 +35,7 @@ run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE, drop_de
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # list all keys, prepare codebook ---
-    all_keys = read_surveydata(dc$nonkey_files[1], use_labels=use_labels)$key_table
+    all_keys = read_surveydata(dc$nonkey_files[1], output = c("key_table"), use_labels=use_labels)$key_table
     near_codebook_keyfile = reformat_keyfiles(dc$key_files[1], all_keys) %>%
       mutate(filenames = paste0(cur_survey_patterns, collapse=","))
     
