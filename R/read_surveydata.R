@@ -50,6 +50,7 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   if(is.null(output) | length(output) == 0) {
     out_list = final_df # by default return data.frame
   } else {
+    out_list = list()
     if("key_table" %in% output) {
       out_list = list.append(out_list, key_table = new_key_table)
     }
