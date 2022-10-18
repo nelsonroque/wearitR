@@ -24,6 +24,8 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   tb_names_onread <- names(raw_df)
   tb_names_label <- raw_df[1,] %>% unlist(.)
   tb_names_ques <- raw_df[2,] %>% unlist(.)
+
+  # TODO: find better way to extract specific column names rather than by index
   first3_cols <- c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3], tb_names_ques[4])
   
   # create tidied headers ---
