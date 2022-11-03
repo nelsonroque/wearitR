@@ -12,7 +12,7 @@
 #' (produces list including all data), or c("key_table", "tidy_data") to produce both. 
 #' @details None
 read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data"), use_labels=TRUE, 
-                            data_format="deprecated", expected_headers=3) {
+                            expected_headers=3) {
   # read in survey data with all headers ----
   if(is.na(col_names)) {
     raw_df <- read_csv(fn, skip = 0, 
@@ -38,7 +38,7 @@ read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data
   }
 
   # TODO: find better way to extract specific column names rather than by index
-  if(data_format == "deprecated") {
+  if(expected_headers == 3) {
     id_cols <- c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3], tb_names_ques[4])
   } else {
     id_cols <- c("Survey Name","Participant ID","External ID","Session ID",
