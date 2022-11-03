@@ -11,27 +11,45 @@
 #' (produces list of question numbers, questions, and variable names/labels), "tidy_data" 
 #' (produces list including all data), or c("key_table", "tidy_data") to produce both. 
 #' @details None
-read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data"), use_labels=TRUE) {
+read_surveydata <- function(fn, col_names=NA, output = c("key_table", "tidy_data"), use_labels=TRUE, 
+                            data_format="deprecated", expected_headers=3) {
   # read in survey data with all headers ----
   if(is.na(col_names)) {
-    raw_df <- read_csv(fn, skip = 0, na = c("", "NA", "N/A"), 
-    col_types = cols(.default = "c"))
+    raw_df <- read_csv(fn, skip = 0, 
+                       na = c("", "NA", "N/A"), 
+                       col_types = cols(.default = "c"))
   } else {
-    raw_df <- read_csv(fn, skip = 0, col_names = col_names, 
-    na = c("", "NA", "N/A"), col_types = cols(.default = "c"))
+    raw_df <- read_csv(fn, skip = 0, 
+                       col_names = col_names, 
+                       na = c("", "NA", "N/A"), 
+                       col_types = cols(.default = "c"))
   }
   # read header all the ways ----
-  tb_names_onread <- names(raw_df)
-  tb_names_label <- raw_df[1,] %>% unlist(.)
-  tb_names_ques <- raw_df[2,] %>% unlist(.)
+  if(expected_headers == 3) {
+    tb_names_onread <- names(raw_df)
+    tb_names_label <- raw_df[1,] %>% unlist(.)
+    tb_names_ques <- raw_df[2,] %>% unlist(.)
+    tb_names_ques_colnames <- names(tb_names_ques)
+  } else {
+    tb_names_onread <- names(raw_df)
+    tb_names_label <- raw_df[1,] %>% unlist(.)
+    tb_names_ques <- raw_df[1,] %>% unlist(.)
+    tb_names_ques_colnames <- names(tb_names_ques)
+  }
 
   # TODO: find better way to extract specific column names rather than by index
-  first3_cols <- c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3], tb_names_ques[4])
-  
+  if(data_format == "deprecated") {
+    id_cols <- c(tb_names_ques[1], tb_names_ques[2], tb_names_ques[3], tb_names_ques[4])
+  } else {
+    id_cols <- c("Survey Name","Participant ID","External ID","Session ID",
+                 "Alert Times","Survey Start","Survey Date Completed","Survey Date Submitted",
+                 "Network Type","App Version","OS","Model")
+  }
+
   # create tidied headers ---
-  cols_for_keymerge_num = unname(c(first3_cols, tb_names_onread[5:length(tb_names_onread)]))
-  cols_for_keymerge_ques = unname(c(first3_cols, tb_names_ques[5:length(tb_names_ques)]))
-  cols_for_keymerge_labels = unname(c(first3_cols, tb_names_label[5:length(tb_names_label)]))
+  cols_for_keymerge_num = unname(c(id_cols, tb_names_onread[5:length(tb_names_onread)]))
+  cols_for_keymerge_ques = unname(c(id_cols, tb_names_ques[5:length(tb_names_ques)]))
+  cols_for_keymerge_labels = unname(c(id_cols, tb_names_label[5:length(tb_names_label)]))
   
   # create modified lookup table with tidied headers ----
   new_key_table = tibble(wearit_col_qnum = cols_for_keymerge_num, 
