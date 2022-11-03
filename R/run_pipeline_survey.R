@@ -1,6 +1,7 @@
 #' Read WearIT Survey data ----
 #' @export
-run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE, drop_deprecated=TRUE) {
+run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE, drop_deprecated=TRUE,
+                                expected_headers=3) {
   
   # create session timestamp ----
   session_ts = str_replace_all(Sys.time(), "[[:punct:]]", "_")
@@ -35,7 +36,11 @@ run_pipeline_survey <- function(data_path, config_path, use_labels=TRUE, drop_de
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     # list all keys, prepare codebook ---
-    all_keys = read_surveydata(dc$nonkey_files[1], output = c("key_table"), use_labels=use_labels)$key_table
+    #expected_headers=3
+    all_keys = read_surveydata(dc$nonkey_files[1], 
+                               output = c("key_table"), 
+                               expected_headers=expected_headers,
+                               use_labels=use_labels)$key_table
     near_codebook_keyfile = reformat_keyfiles(dc$key_files[1], all_keys) %>%
       mutate(filenames = paste0(cur_survey_patterns, collapse=","))
     
